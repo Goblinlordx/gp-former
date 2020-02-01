@@ -63,8 +63,8 @@ export default ({ setup }) => {
           ))}
         </GroupContent>
         <GroupContent>
-          {researchTiles.slice(6).map(i => (
-            <Cell key={i}>res {researchTiles[i]}</Cell>
+          {researchTiles.slice(-3).map(v => (
+            <Cell key={v}>res {v}</Cell>
           ))}
         </GroupContent>
       </Group>
