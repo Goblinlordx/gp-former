@@ -1,4 +1,4 @@
-// Park-Miller PCG (ref: http://www.firstpr.com.au/dsp/rand31/)
+// Park-Miller LCG (ref: http://www.firstpr.com.au/dsp/rand31/)
 const A = 16807; // Multiplier
 const MAX = 0x7fffffff; // (2^31) - 1
 
