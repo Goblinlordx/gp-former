@@ -18,6 +18,15 @@ const getIterations = (rng, cycles) =>
     .fill(0)
     .map(rng);
 
+it("returns same values given same seed", () => {
+  const rng1 = createPrng();
+  const rng2 = createPrng();
+  const results1 = getIterations(rng1, 1000);
+  const results2 = getIterations(rng2, 1000);
+  const equal = results1.every((v, i) => v === results2[i]);
+  expect(equal).toBeTruthy();
+});
+
 comparisonSeeds.forEach(([left, right]) => {
 
   it(`generates different numbers from different seeds: ${printArr([
