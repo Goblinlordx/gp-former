@@ -1,6 +1,8 @@
 import React from "react";
-import { Section, Content } from "./Common";
 import styled from "styled-components";
+import tokens from "../styles/tokens";
+import { Section, Content } from "./Common";
+import FactionDisplay from "./FactionDisplay";
 
 const Group = styled(Content)`
   display: flex;
@@ -30,15 +32,6 @@ const Cell = styled.div`
   padding: 0.5em;
 `;
 
-const researchColors = [
-  "#7b4f40",
-  "#6c84a3",
-  "#53a236",
-  "#a81974",
-  "#f0a108",
-  "#1b9bcc"
-];
-
 export default ({ setup }) => {
   const {
     bonusFederationTile,
@@ -54,7 +47,7 @@ export default ({ setup }) => {
       <Group>
         <GroupHeader>Research Tracks</GroupHeader>
         <GroupContent>
-          {researchColors.map((c, i) => (
+          {tokens.researchTrackColors.map((c, i) => (
             <Cell key={c} color={c}>
               <div>fb {i === 0 && bonusFederationTile}</div>
               <div>adv {advancedResearchTiles[i]}</div>
@@ -93,7 +86,9 @@ export default ({ setup }) => {
         <GroupHeader>Player Races</GroupHeader>
         <GroupContent>
           {playerRaces.map(r => (
-            <Cell key={r}>race {r}</Cell>
+            <Cell key={r}>
+              <FactionDisplay type={r} />
+            </Cell>
           ))}
         </GroupContent>
       </Group>
