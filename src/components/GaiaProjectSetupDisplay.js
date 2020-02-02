@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
-import AdvancedResearchDisplay from "./AdvancedResearchDisplay";
+import AdvancedTechTile from "./AdvancedTechTile";
 import StandardTechTile from "./StandardTechTile";
 import FactionDisplay from "./FactionDisplay";
 
@@ -37,8 +37,8 @@ const Cell = styled.div`
 export default ({ setup }) => {
   const {
     bonusFederationTile,
-    advancedResearchTiles,
-    researchTiles,
+    advancedTechTiles,
+    techTiles,
     roundBonusTiles,
     finalScoringTiles,
     roundBoosters,
@@ -52,13 +52,13 @@ export default ({ setup }) => {
           {tokens.researchTrackColors.map((c, i) => (
             <Cell key={c} color={c}>
               <div>fb {i === 0 && bonusFederationTile}</div>
-              <AdvancedResearchDisplay tileID={advancedResearchTiles[i]} />
-              <StandardTechTile tileID={researchTiles[i]} />
+              <AdvancedTechTile tileID={advancedTechTiles[i]} />
+              <StandardTechTile tileID={techTiles[i]} />
             </Cell>
           ))}
         </GroupContent>
         <GroupContent>
-          {researchTiles.slice(-3).map(tileID => (
+          {techTiles.slice(-3).map(tileID => (
             <Cell key={tileID}>
               <StandardTechTile tileID={tileID} />
             </Cell>
