@@ -11,7 +11,7 @@ const createSet = n =>
     .map((_, i) => i + 1);
 
 const finalScoringTiles = createSet(6);
-const roundBonusTiles = createSet(10);
+const roundScoringTiles = createSet(10);
 const roundBoosters = createSet(10);
 const techTiles = createSet(9);
 const advancedTechTiles = createSet(15);
@@ -28,7 +28,7 @@ const randomizeGaiaProject = async ({ seed: inputSeed }) => {
     bonusFederationToken: select(federationTiles),
     advancedTechTiles: selectSubset(advancedTechTiles, 6),
     techTiles: shuffle(techTiles, 9),
-    roundBonusTiles: selectSubset(roundBonusTiles, 6).sort(sortInt),
+    roundScoringTiles: selectSubset(roundScoringTiles, 6).sort(sortInt),
     finalScoringTiles: selectSubset(finalScoringTiles, 2).sort(sortInt),
     roundBoosters: selectSubset(roundBoosters, 7),
     playerRaces: selectSubset(playerRaces, 4)

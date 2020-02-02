@@ -41,7 +41,7 @@ export default ({ setup }) => {
     bonusFederationToken,
     advancedTechTiles,
     techTiles,
-    roundBonusTiles,
+    roundScoringTiles,
     finalScoringTiles,
     roundBoosters,
     playerRaces
@@ -70,7 +70,7 @@ export default ({ setup }) => {
       <Group>
         <GroupHeader>Round Track & Final Scoring</GroupHeader>
         <GroupContent>
-          {roundBonusTiles.map(i => (
+          {roundScoringTiles.map(i => (
             <Cell key={i}>rb {i}</Cell>
           ))}
         </GroupContent>

@@ -42,8 +42,8 @@ it("result has 9 research tiles token with different order per seed", async () =
 it("result has 6 round bonus tiles token different per seed", async () => {
   const result1 = await randomizeGaiaProject({ seed: 0 });
   const result2 = await randomizeGaiaProject({ seed: 100 });
-  expect(result1.roundBonusTiles.length).toEqual(6);
-  expect(result1.roundBonusTiles).not.toEqual(result2.roundBonusTiles);
+  expect(result1.roundScoringTiles.length).toEqual(6);
+  expect(result1.roundScoringTiles).not.toEqual(result2.roundScoringTiles);
 });
 
 it("result has 2 final scoring tiles token different per seed", async () => {
