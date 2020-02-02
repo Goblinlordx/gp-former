@@ -3,6 +3,7 @@ import styled from "styled-components";
 import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
 import AdvancedResearchDisplay from "./AdvancedResearchDisplay";
+import StandardTechTile from "./StandardTechTile";
 import FactionDisplay from "./FactionDisplay";
 
 const Group = styled(Content)`
@@ -52,13 +53,15 @@ export default ({ setup }) => {
             <Cell key={c} color={c}>
               <div>fb {i === 0 && bonusFederationTile}</div>
               <AdvancedResearchDisplay tileID={advancedResearchTiles[i]} />
-              <div>res {researchTiles[i]}</div>
+              <StandardTechTile tileID={researchTiles[i]} />
             </Cell>
           ))}
         </GroupContent>
         <GroupContent>
-          {researchTiles.slice(-3).map(v => (
-            <Cell key={v}>res {v}</Cell>
+          {researchTiles.slice(-3).map(tileID => (
+            <Cell key={tileID}>
+              <StandardTechTile tileID={tileID} />
+            </Cell>
           ))}
         </GroupContent>
       </Group>

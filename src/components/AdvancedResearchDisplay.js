@@ -38,6 +38,7 @@ const idToName = n => `adv${("00" + n).slice(-2)}`;
 
 const Tile = styled.img`
   height: 80px;
+  margin: 0.25em 0em;
 `;
 
 export default ({ tileID }) => (
