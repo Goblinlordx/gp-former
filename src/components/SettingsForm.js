@@ -51,9 +51,16 @@ export default ({ loading }) => {
     debug: false,
     ...query
   });
+  const toQuery = ({ debug, ...data }) => {
+    if (debug === "true") {
+      data.debug = true;
+    }
+    return data;
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    history.push({ pathname: "/", search: createQueryString(form) });
+    history.push({ pathname: "/", search: createQueryString(toQuery(form)) });
   };
   const handleChange = name => e => {
     e.preventDefault();
@@ -67,7 +74,7 @@ export default ({ loading }) => {
     setForm(next);
     history.push({
       pathname: "/",
-      search: createQueryString(next)
+      search: createQueryString(toQuery(next))
     });
   };
 

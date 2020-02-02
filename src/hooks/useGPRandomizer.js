@@ -14,7 +14,8 @@ export default () => {
     setExternalLoading(v);
   };
 
-  const { seed, playerCount, debug } = useQuery();
+  const { seed, playerCount, debug: debugQuery } = useQuery();
+  const debug = parseBool(debugQuery);
 
   useEffect(() => {
     if (internalLoading) return;
