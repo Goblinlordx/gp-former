@@ -31,9 +31,11 @@ export default ({ loading }) => {
 
   const handleRandomize = e => {
     const seed = Math.floor(Math.random() * 36 ** 5).toString(36);
+    const next = { ...form, seed };
+    setForm(next);
     history.push({
       pathname: "/",
-      search: createQueryString({ ...form, seed })
+      search: createQueryString(next)
     });
   };
 
