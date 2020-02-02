@@ -1,7 +1,7 @@
 All images in "src/owned" folder are copyright 2017 Feuerland
 Verlagsgesellschaft mbH and used by permission for this project only.
 
-All files excluding those contained in "src/owned" folder is copyright
+All files excluding those contained in "src/owned" folder are copyright
 2020 Benjamin Michael Baldivia under the GNU AGPLv3.
 
                     GNU AFFERO GENERAL PUBLIC LICENSE
