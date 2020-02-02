@@ -27,13 +27,16 @@ const typeMap = {
 };
 
 const Container = styled.div`
+  display: inline-flex;
   position: relative;
+  min-width: 150px;
+  align-items: center;
 `;
 
 const Label = styled.span`
   position: relative;
+  flex-grow: 1;
   margin-right: 0.5em;
-  vertical-align: middle;
 `;
 
 const Planet = styled.img`

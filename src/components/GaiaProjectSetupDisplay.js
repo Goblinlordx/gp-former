@@ -26,8 +26,8 @@ const GroupHeader = styled(Content)`
 
 const GroupContent = styled.div`
   display: flex;
+  flex-wrap: wrap;
   position: relative;
-  overflow: auto;
 `;
 
 const Cell = styled.div`
