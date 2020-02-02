@@ -11,7 +11,7 @@ const createSet = n =>
     .map((_, i) => i + 1);
 
 const finalScoringTiles = createSet(6);
-const roundBonusTiles = createSet(7);
+const roundBonusTiles = createSet(10);
 const roundBoosters = createSet(10);
 const techTiles = createSet(9);
 const advancedTechTiles = createSet(15);
