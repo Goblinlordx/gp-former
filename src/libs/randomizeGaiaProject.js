@@ -39,6 +39,7 @@ const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
     playerFactions: selectSubset(playerFactions, 4)
       .map(v => `${v}${selectSubset(["a", "b"], 1)[0]}`)
       .slice(0, playerCount)
+      .sort()
   };
 };
 
