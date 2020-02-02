@@ -4,6 +4,7 @@ import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
 import AdvancedTechTile from "./AdvancedTechTile";
 import StandardTechTile from "./StandardTechTile";
+import RoundBooster from "./RoundBooster";
 import FactionDisplay from "./FactionDisplay";
 
 const Group = styled(Content)`
@@ -81,8 +82,10 @@ export default ({ setup }) => {
       <Group>
         <GroupHeader>Round Boosters</GroupHeader>
         <GroupContent>
-          {roundBoosters.map(i => (
-            <Cell key={i}>boost {i}</Cell>
+          {roundBoosters.map(tileID => (
+            <Cell key={tileID}>
+              <RoundBooster tileID={tileID} />
+            </Cell>
           ))}
         </GroupContent>
       </Group>
