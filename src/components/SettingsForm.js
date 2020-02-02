@@ -31,7 +31,8 @@ const Field = styled.label`
   display: flex;
   max-width: 300px;
   margin-bottom: 0.25em;
-  input, select {
+  input,
+  select {
     flex-grow: 1;
   }
 `;
@@ -99,6 +100,7 @@ export default ({ loading }) => {
           </Field>
         </div>
         <ButtonRow>
+          <button hidden disabled={loading} onClick={handleSubmit} />
           <button disabled={loading} onClick={handleRandomize}>
             Randomize
           </button>
