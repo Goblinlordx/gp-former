@@ -5,6 +5,37 @@ import { Section } from "./Common";
 import useQuery from "../hooks/useQuery";
 import createQueryString from "../libs/createQueryString";
 
+const Form = styled.form`
+  font-size: 18px;
+  input,
+  select,
+  button {
+    font-size: 18px;
+  }
+  button {
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 1em;
+    padding: 0.25em 1em;
+    & + button {
+      margin-left: 1em;
+    }
+  }
+`;
+
+const ButtonRow = styled.div`
+  text-align: right;
+`;
+
+const Field = styled.label`
+  display: flex;
+  max-width: 300px;
+  margin-bottom: 0.25em;
+  input, select {
+    flex-grow: 1;
+  }
+`;
+
 const FieldLabel = styled.span`
   margin-right: 1em;
   font-weight: bold;
@@ -41,9 +72,9 @@ export default ({ loading }) => {
 
   return (
     <Section>
-      <form style={{ margin: "0.5em" }} onSubmit={handleSubmit}>
+      <Form style={{ margin: "0.5em" }} onSubmit={handleSubmit}>
         <div>
-          <label>
+          <Field>
             <FieldLabel>Seed</FieldLabel>
             <input
               type="text"
@@ -51,10 +82,10 @@ export default ({ loading }) => {
               value={form.seed}
               onChange={handleChange("seed")}
             />
-          </label>
+          </Field>
         </div>
         <div>
-          <label>
+          <Field>
             <FieldLabel>Player Count</FieldLabel>
             <select
               name="playerCount"
@@ -65,13 +96,17 @@ export default ({ loading }) => {
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
-          </label>
+          </Field>
         </div>
-        <input type="submit" label="Generate" />
-        <button disabled={loading} onClick={handleRandomize}>
-          Randomize
-        </button>
-      </form>
+        <ButtonRow>
+          <button disabled={loading} onClick={handleRandomize}>
+            Randomize
+          </button>
+          <button disabled={loading} onClick={handleSubmit}>
+            Generate
+          </button>
+        </ButtonRow>
+      </Form>
     </Section>
   );
 };
