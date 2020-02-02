@@ -18,21 +18,27 @@ const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
 const playerRaces = createSet(7);
 
-const randomizeGaiaProject = async ({ seed: inputSeed }) => {
+const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
+  if (playerCount < 2 || playerCount > 4)
+    throw new Error("Invalid player count");
   const seed = hash(inputSeed);
   const prng = createPrng(seed);
   const shuffle = createShuffle(prng);
   const select = createSelector(prng);
   const selectSubset = createSubsetSelector(prng);
+  const roundBoosterCount = playerCount + 3;
   return {
     bonusFederationToken: select(federationTiles),
     advancedTechTiles: selectSubset(advancedTechTiles, 6),
     techTiles: shuffle(techTiles, 9),
     roundScoringTiles: selectSubset(roundScoringTiles, 6).sort(sortInt),
     finalScoringTiles: selectSubset(finalScoringTiles, 2).sort(sortInt),
-    roundBoosters: selectSubset(roundBoosters, 7),
+    roundBoosters: selectSubset(roundBoosters, 7)
+      .slice(0, roundBoosterCount)
+      .sort(sortInt),
     playerRaces: selectSubset(playerRaces, 4)
       .map(v => `${v}${selectSubset(["a", "b"], 1)[0]}`)
+      .slice(0, playerCount)
   };
 };
 
