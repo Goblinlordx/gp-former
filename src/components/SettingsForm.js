@@ -12,6 +12,11 @@ const Form = styled.form`
   button {
     font-size: 18px;
   }
+  input, select {
+    padding: 0.25em 0.5em;
+    border: none;
+    border-radius: 4px;
+  }
   button {
     border-radius: 4px;
     font-weight: bold;
