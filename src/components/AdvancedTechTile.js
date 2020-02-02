@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import adv01 from "../owned/adv_01.png";
 import adv02 from "../owned/adv_02.png";
 import adv03 from "../owned/adv_03.png";

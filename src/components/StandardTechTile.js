@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import tec1 from "../owned/tec_1.png";
 import tec2 from "../owned/tec_2.png";
 import tec3 from "../owned/tec_3.png";
@@ -9,7 +8,7 @@ import tec6 from "../owned/tec_6.png";
 import tec7 from "../owned/tec_7.png";
 import tec8 from "../owned/tec_8.png";
 import tec9 from "../owned/tec_9.png";
-import {Tile} from "./Common";
+import { Tile } from "./Common";
 
 const tiles = {
   tec1,
