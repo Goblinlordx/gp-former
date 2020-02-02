@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
+import FederationToken from "./FederationToken";
 import AdvancedTechTile from "./AdvancedTechTile";
 import StandardTechTile from "./StandardTechTile";
 import RoundScoringTile from "./RoundScoringTile";
@@ -54,7 +55,9 @@ export default ({ setup }) => {
         <GroupContent>
           {tokens.researchTrackColors.map((c, i) => (
             <Cell key={c} color={c}>
-              <div>fb {i === 0 && bonusFederationToken}</div>
+              <FederationToken
+                tokenID={i === 0 ? bonusFederationToken : null}
+              />
               <AdvancedTechTile tileID={advancedTechTiles[i]} />
               <StandardTechTile tileID={techTiles[i]} />
             </Cell>
