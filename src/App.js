@@ -2,9 +2,9 @@ import React, { useState } from "react";
 // import logo from './logo.svg';
 import "./App.css";
 import useGPRandomizer from "./hooks/useGPRandomizer";
-import About from "./About";
-import SettingsForm from "./SettingsForm";
-import GaiaProjectSetupDisplay from "./GaiaProjectSetupDisplay";
+import About from "./components/About";
+import SettingsForm from "./components/SettingsForm";
+import GaiaProjectSetupDisplay from "./components/GaiaProjectSetupDisplay";
 
 function App() {
   const [form, setForm] = useState({ seed: 0 });
