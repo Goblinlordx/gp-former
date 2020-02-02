@@ -36,7 +36,7 @@ const Cell = styled.div`
 
 export default ({ setup }) => {
   const {
-    bonusFederationTile,
+    bonusFederationToken,
     advancedTechTiles,
     techTiles,
     roundBonusTiles,
@@ -51,7 +51,7 @@ export default ({ setup }) => {
         <GroupContent>
           {tokens.researchTrackColors.map((c, i) => (
             <Cell key={c} color={c}>
-              <div>fb {i === 0 && bonusFederationTile}</div>
+              <div>fb {i === 0 && bonusFederationToken}</div>
               <AdvancedTechTile tileID={advancedTechTiles[i]} />
               <StandardTechTile tileID={techTiles[i]} />
             </Cell>

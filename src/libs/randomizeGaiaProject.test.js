@@ -19,8 +19,8 @@ it("returns same result given same seed", async () => {
 it("result has 1 federation token different per seed", async () => {
   const result1 = await randomizeGaiaProject({ seed: 0 });
   const result2 = await randomizeGaiaProject({ seed: 100 });
-  expect(typeof result1.bonusFederationTile).toEqual("number");
-  expect(result1.bonusFederationTile).not.toEqual(result2.bonusFederationTile);
+  expect(typeof result1.bonusFederationToken).toEqual("number");
+  expect(result1.bonusFederationToken).not.toEqual(result2.bonusFederationToken);
 });
 
 it("result has 6 advanced research tiles token different per seed", async () => {
@@ -57,7 +57,7 @@ it("result has 7 round boosters different per seed", async () => {
   const result1 = await randomizeGaiaProject({ seed: 0 });
   const result2 = await randomizeGaiaProject({ seed: 100 });
   expect(result1.roundBoosters.length).toEqual(7);
-  expect(result1.bonusFederationTile).not.toEqual(result2.bonusFederationTile);
+  expect(result1.bonusFederationToken).not.toEqual(result2.bonusFederationToken);
 });
 
 it("result has 4 races different per seed", async () => {

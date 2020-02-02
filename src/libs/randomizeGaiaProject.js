@@ -25,7 +25,7 @@ const randomizeGaiaProject = async ({ seed: inputSeed }) => {
   const select = createSelector(prng);
   const selectSubset = createSubsetSelector(prng);
   return {
-    bonusFederationTile: select(federationTiles),
+    bonusFederationToken: select(federationTiles),
     advancedTechTiles: selectSubset(advancedTechTiles, 6),
     techTiles: shuffle(techTiles, 9),
     roundBonusTiles: selectSubset(roundBonusTiles, 6).sort(sortInt),
