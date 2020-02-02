@@ -9,6 +9,7 @@ import tec6 from "../owned/tec_6.png";
 import tec7 from "../owned/tec_7.png";
 import tec8 from "../owned/tec_8.png";
 import tec9 from "../owned/tec_9.png";
+import {Tile} from "./Common";
 
 const tiles = {
   tec1,
@@ -21,11 +22,6 @@ const tiles = {
   tec8,
   tec9
 };
-
-const Tile = styled.img`
-  height: 80px;
-  margin: 0.25em 0em;
-`;
 
 export default ({ tileID }) => (
   <Tile src={tiles[`tec${tileID}`]} alt="standard tech tile" />

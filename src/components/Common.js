@@ -12,3 +12,8 @@ export const Section = styled.div`
 export const Content = styled.div`
   margin: 0.5em;
 `;
+
+export const Tile = styled.img`
+  height: 80px;
+  margin: 0.25em 0em;
+`;

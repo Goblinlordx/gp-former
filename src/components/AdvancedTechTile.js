@@ -15,6 +15,7 @@ import adv12 from "../owned/adv_12.png";
 import adv13 from "../owned/adv_13.png";
 import adv14 from "../owned/adv_14.png";
 import adv15 from "../owned/adv_15.png";
+import { Tile } from "./Common";
 
 const tiles = {
   adv01,
@@ -35,11 +36,6 @@ const tiles = {
 };
 
 const idToName = n => `adv${("00" + n).slice(-2)}`;
-
-const Tile = styled.img`
-  height: 80px;
-  margin: 0.25em 0em;
-`;
 
 export default ({ tileID }) => (
   <Tile src={tiles[idToName(tileID)]} alt="advanced research tile" />
