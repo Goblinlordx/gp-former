@@ -52,7 +52,7 @@ const GaiaProjectRandomizer = ({ setup }) => {
   return (
     <Section>
       <Group>
-        <GroupHeader>Player Races</GroupHeader>
+        <GroupHeader>Player Factions</GroupHeader>
         <GroupContent>
           {playerFactions.map(r => (
             <Cell key={r}>
