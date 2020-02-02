@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
+import AdvancedResearchDisplay from "./AdvancedResearchDisplay";
 import FactionDisplay from "./FactionDisplay";
 
 const Group = styled(Content)`
@@ -50,7 +51,7 @@ export default ({ setup }) => {
           {tokens.researchTrackColors.map((c, i) => (
             <Cell key={c} color={c}>
               <div>fb {i === 0 && bonusFederationTile}</div>
-              <div>adv {advancedResearchTiles[i]}</div>
+              <AdvancedResearchDisplay tileID={advancedResearchTiles[i]} />
               <div>res {researchTiles[i]}</div>
             </Cell>
           ))}
