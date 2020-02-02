@@ -4,6 +4,7 @@ import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
 import AdvancedTechTile from "./AdvancedTechTile";
 import StandardTechTile from "./StandardTechTile";
+import RoundScoringTile from "./RoundScoringTile";
 import FinalScoringTile from "./FinalScoringTile";
 import RoundBooster from "./RoundBooster";
 import FactionDisplay from "./FactionDisplay";
@@ -70,8 +71,10 @@ export default ({ setup }) => {
       <Group>
         <GroupHeader>Round Track & Final Scoring</GroupHeader>
         <GroupContent>
-          {roundScoringTiles.map(i => (
-            <Cell key={i}>rb {i}</Cell>
+          {roundScoringTiles.map(tileID => (
+            <Cell key={tileID}>
+              <RoundScoringTile tileID={tileID} />
+            </Cell>
           ))}
         </GroupContent>
         <GroupContent>
