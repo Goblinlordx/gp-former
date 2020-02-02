@@ -16,7 +16,7 @@ const roundBoosters = createSet(10);
 const techTiles = createSet(9);
 const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
-const playerRaces = createSet(7);
+const playerFactions = createSet(7);
 
 const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
   if (playerCount < 2 || playerCount > 4)
@@ -36,7 +36,7 @@ const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
     roundBoosters: selectSubset(roundBoosters, 7)
       .slice(0, roundBoosterCount)
       .sort(sortInt),
-    playerRaces: selectSubset(playerRaces, 4)
+    playerFactions: selectSubset(playerFactions, 4)
       .map(v => `${v}${selectSubset(["a", "b"], 1)[0]}`)
       .slice(0, playerCount)
   };

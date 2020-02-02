@@ -46,7 +46,7 @@ export default ({ setup }) => {
     roundScoringTiles,
     finalScoringTiles,
     roundBoosters,
-    playerRaces
+    playerFactions
   } = setup;
   return (
     <Section>
@@ -101,7 +101,7 @@ export default ({ setup }) => {
       <Group>
         <GroupHeader>Player Races</GroupHeader>
         <GroupContent>
-          {playerRaces.map(r => (
+          {playerFactions.map(r => (
             <Cell key={r}>
               <FactionDisplay type={r} />
             </Cell>

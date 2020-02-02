@@ -65,8 +65,8 @@ it("result has 7 round boosters different per seed", async () => {
 it("result has 4 races different per seed", async () => {
   const result1 = await randomizeGaiaProject({ seed: 0 });
   const result2 = await randomizeGaiaProject({ seed: 100 });
-  expect(result1.playerRaces.length).toEqual(4);
-  expect(result1.playerRaces).not.toEqual(result2.playerRaces);
+  expect(result1.playerFactions.length).toEqual(4);
+  expect(result1.playerFactions).not.toEqual(result2.playerFactions);
 });
 
 it("result appropriate number of round boosters with 2 players", async () => {
@@ -78,22 +78,22 @@ it("result appropriate number of round boosters with 2 players", async () => {
 });
 
 it("result appropriate number of round boosters with 2 players", async () => {
-  const { playerRaces } = await randomizeGaiaProject({
+  const { playerFactions } = await randomizeGaiaProject({
     seed: 0,
     playerCount: 2
   });
-  expect(playerRaces.length).toEqual(2);
+  expect(playerFactions.length).toEqual(2);
 });
 
 it("result same with different player count except for round boosters and factions", async () => {
   const {
     roundBoosters,
-    playerRaces,
+    playerFactions,
     ...result1
   } = await randomizeGaiaProject({ seed: 0 });
   const {
     roundBoosters: _,
-    playerRaces: __,
+    playerFactions: __,
     ...result2
   } = await randomizeGaiaProject({ seed: 0, playerCount: 2 });
 
