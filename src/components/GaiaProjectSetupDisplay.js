@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import tokens from "../styles/tokens";
 import { Section, Content } from "./Common";
@@ -38,7 +39,7 @@ const Cell = styled.div`
   padding: 0.5em;
 `;
 
-export default ({ setup }) => {
+const GaiaProjectRandomizer = ({ setup }) => {
   const {
     bonusFederationToken,
     advancedTechTiles,
@@ -50,6 +51,16 @@ export default ({ setup }) => {
   } = setup;
   return (
     <Section>
+      <Group>
+        <GroupHeader>Player Races</GroupHeader>
+        <GroupContent>
+          {playerFactions.map(r => (
+            <Cell key={r}>
+              <FactionDisplay type={r} />
+            </Cell>
+          ))}
+        </GroupContent>
+      </Group>
       <Group>
         <GroupHeader>Research Tracks</GroupHeader>
         <GroupContent>
@@ -98,16 +109,8 @@ export default ({ setup }) => {
           ))}
         </GroupContent>
       </Group>
-      <Group>
-        <GroupHeader>Player Races</GroupHeader>
-        <GroupContent>
-          {playerFactions.map(r => (
-            <Cell key={r}>
-              <FactionDisplay type={r} />
-            </Cell>
-          ))}
-        </GroupContent>
-      </Group>
     </Section>
   );
 };
+
+export default withRouter(GaiaProjectRandomizer);

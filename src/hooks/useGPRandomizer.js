@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import useQuery from "../hooks/useQuery";
 import randomizeGaiaProject from "../libs/randomizeGaiaProject";
 
+const parseBool = str => str === "true";
+
 let internalLoading = false;
-export default config => {
+export default () => {
   const [loading, setExternalLoading] = useState(true);
-  const [inputConfig, setInputConfig] = useState(config);
   const [error, setError] = useState(null);
   const [state, setState] = useState(null);
   const setLoading = v => {
@@ -12,30 +14,26 @@ export default config => {
     setExternalLoading(v);
   };
 
-  const run = () => {
-    setInputConfig(config);
-  };
-
-  const reset = () => {
-    setState(null);
-    setError(null);
-  };
+  const { seed, playerCount, debug } = useQuery();
 
   useEffect(() => {
     if (internalLoading) return;
     setLoading(true);
-    const { debug = false } = inputConfig;
     if (debug) console.time("randomizer");
-    randomizeGaiaProject(inputConfig)
+    randomizeGaiaProject({
+      seed,
+      playerCount: parseInt(playerCount),
+      debug: parseBool(debug)
+    })
       .then(res => {
         setState(res);
       })
-      .catch(err => console.log(err) || setError(err))
+      .catch(err => setError(err))
       .finally(() => {
         if (debug) console.timeEnd("randomizer");
         setLoading(false);
       });
-  }, [inputConfig]);
+  }, [seed, playerCount, debug]);
 
-  return [state, run, reset, loading, error];
+  return [state, loading, error];
 };

@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-// import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./App.css";
-import useGPRandomizer from "./hooks/useGPRandomizer";
 import About from "./components/About";
 import SettingsForm from "./components/SettingsForm";
-import GaiaProjectSetupDisplay from "./components/GaiaProjectSetupDisplay";
+import LoadableSetupDisplay from "./components/LoadableSetupDisplay";
+import useGPRandomizer from "./hooks/useGPRandomizer";
 
-function App() {
+const App = () => {
   const [form, setForm] = useState({ seed: 0 });
-  const [state, run] = useGPRandomizer(form);
+  const [setup, loading, error] = useGPRandomizer();
 
   return (
     <div className="App">
       <About />
-      <SettingsForm data={form} onInput={setForm} onSubmit={run} />
-      {state && <GaiaProjectSetupDisplay setup={state} />}
+      <SettingsForm loading={loading} data={form} onInput={setForm} />
+      <LoadableSetupDisplay setup={setup} loading={loading} error={error} />
     </div>
   );
-}
+};
 
-export default App;
+const Wrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+export default Wrapper;
