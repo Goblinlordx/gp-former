@@ -22,7 +22,7 @@ export default () => {
     setLoading(true);
     if (debug) console.time("randomizer");
     randomizeGaiaProject({
-      seed,
+      seed: seed || "0",
       playerCount: parseInt(playerCount) || 4,
       debug: parseBool(debug)
     })

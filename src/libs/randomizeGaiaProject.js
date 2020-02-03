@@ -21,7 +21,7 @@ const playerFactions = createSet(7);
 const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
   if (playerCount < 2 || playerCount > 4)
     throw new Error("Invalid player count");
-  const seed = hash(inputSeed || "0");
+  const seed = hash(inputSeed || 0);
   const prng = createPrng(seed);
   const shuffle = createShuffle(prng);
   const select = createSelector(prng);
