@@ -15,7 +15,7 @@ You will also see any lint errors in the console.
 
 ### `yarn lint`
 
-Lints code based on prettier.<br />
+Lints code based on [prettier][3].<br />
 
 ### `yarn test`
 
@@ -28,9 +28,6 @@ Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
 
@@ -49,3 +46,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 [1]: https://boardgamegeek.com/boardgame/220308/gaia-project
 [2]: https://github.com/Goblinlordx/gp-former/blob/master/LICENSE.md
+[3]: https://prettier.io/
