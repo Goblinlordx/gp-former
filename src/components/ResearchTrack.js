@@ -40,7 +40,7 @@ export default ({ federationToken, advancedTechTiles, standardTechTiles }) => (
     ))}
     <ExcessResearchCell>
       {standardTechTiles.slice(6).map(tileID => (
-        <StandardTechTile tileID={tileID} />
+        <StandardTechTile key={tileID} tileID={tileID} />
       ))}
     </ExcessResearchCell>
   </GroupContent>
