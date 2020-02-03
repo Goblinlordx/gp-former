@@ -14,10 +14,11 @@ export const Content = styled.div`
 `;
 
 export const Tile = styled.img`
-  height: 80px;
+  height: auto;
+  width: 100%;
+  max-width: 100px;
   margin: 0.25em 0em;
 `;
-
 
 export const Group = styled(Content)`
   display: flex;
@@ -28,7 +29,6 @@ export const Group = styled(Content)`
   color: #222;
 `;
 
-
 export const GroupHeader = styled(Content)`
   font-weight: bold;
 `;
@@ -38,7 +38,6 @@ export const GroupContent = styled.div`
   flex-wrap: wrap;
   position: relative;
 `;
-
 
 export const Cell = styled.div`
   display: flex;

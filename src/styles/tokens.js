@@ -1,4 +1,8 @@
 const tokens = {
+  breakpoints: {
+    md: "480px",
+    lg: "860px"
+  },
   researchTrackColors: [
     "#6D4739",
     "#73849F",

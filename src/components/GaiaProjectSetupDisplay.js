@@ -2,7 +2,6 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { Section, Group, GroupHeader, GroupContent, Cell } from "./Common";
 import ResearchTrack from "./ResearchTrack";
-import StandardTechTile from "./StandardTechTile";
 import RoundScoringTile from "./RoundScoringTile";
 import FinalScoringTile from "./FinalScoringTile";
 import RoundBooster from "./RoundBooster";
@@ -32,20 +31,11 @@ const GaiaProjectRandomizer = ({ setup }) => {
       </Group>
       <Group>
         <GroupHeader>Research Tracks</GroupHeader>
-        <GroupContent>
-          <ResearchTrack
-            federationToken={bonusFederationToken}
-            advancedTechTiles={advancedTechTiles}
-            standardTechTiles={techTiles}
-          />
-        </GroupContent>
-        <GroupContent>
-          {techTiles.slice(-3).map(tileID => (
-            <Cell key={tileID}>
-              <StandardTechTile tileID={tileID} />
-            </Cell>
-          ))}
-        </GroupContent>
+        <ResearchTrack
+          federationToken={bonusFederationToken}
+          advancedTechTiles={advancedTechTiles}
+          standardTechTiles={techTiles}
+        />
       </Group>
       <Group>
         <GroupHeader>Round Track & Final Scoring</GroupHeader>

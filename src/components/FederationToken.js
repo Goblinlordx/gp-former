@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import sTokens from "../styles/tokens";
 import fed1 from "../owned/fed_1.png";
 import fed2 from "../owned/fed_2.png";
 import fed3 from "../owned/fed_3.png";
@@ -19,18 +20,14 @@ const tokens = {
 };
 
 const Token = styled.img`
-  height: 80px;
+  width: 60px;
   margin: 0.25em;
+  @media (max-width: ${sTokens.breakpoints.md}) {
+    width: 40px;
+  }
 `;
 
-const TokenPlaceholder = styled.div`
-  height: 80px;
-  margin: 0.25em;
-`;
-
-export default ({ tokenID }) =>
+export default ({ tokenID, ...props }) =>
   tokenID != null ? (
-    <Token src={tokens[`fed${tokenID}`]} alt="federation token" />
-  ) : (
-    <TokenPlaceholder />
-  );
+    <Token src={tokens[`fed${tokenID}`]} alt="federation token" {...props} />
+  ) : null;
