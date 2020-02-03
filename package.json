@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && react-snap",
+    "build": "react-scripts build",
+    "build:prerender": "react-snap",
     "test": "react-scripts test",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
@@ -40,6 +41,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "reactSnap": {
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "puppeteerExecutablePath": "/opt/google/chrome/google-chrome"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
