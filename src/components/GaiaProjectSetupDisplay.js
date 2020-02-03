@@ -1,43 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import styled from "styled-components";
-import tokens from "../styles/tokens";
-import { Section, Content } from "./Common";
-import FederationToken from "./FederationToken";
-import AdvancedTechTile from "./AdvancedTechTile";
+import { Section, Group, GroupHeader, GroupContent, Cell } from "./Common";
+import ResearchTrack from "./ResearchTrack";
 import StandardTechTile from "./StandardTechTile";
 import RoundScoringTile from "./RoundScoringTile";
 import FinalScoringTile from "./FinalScoringTile";
 import RoundBooster from "./RoundBooster";
 import FactionDisplay from "./FactionDisplay";
-
-const Group = styled(Content)`
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  border-radius: 4px;
-  background-color: #ccc;
-  color: #222;
-`;
-
-const GroupHeader = styled(Content)`
-  font-weight: bold;
-`;
-
-const GroupContent = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-`;
-
-const Cell = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  align-items: center;
-  ${({ color }) => color && `background-color: ${color};`}
-  padding: 0.5em;
-`;
 
 const GaiaProjectRandomizer = ({ setup }) => {
   const {
@@ -64,15 +33,11 @@ const GaiaProjectRandomizer = ({ setup }) => {
       <Group>
         <GroupHeader>Research Tracks</GroupHeader>
         <GroupContent>
-          {tokens.researchTrackColors.map((c, i) => (
-            <Cell key={c} color={c}>
-              <FederationToken
-                tokenID={i === 0 ? bonusFederationToken : null}
-              />
-              <AdvancedTechTile tileID={advancedTechTiles[i]} />
-              <StandardTechTile tileID={techTiles[i]} />
-            </Cell>
-          ))}
+          <ResearchTrack
+            federationToken={bonusFederationToken}
+            advancedTechTiles={advancedTechTiles}
+            standardTechTiles={techTiles}
+          />
         </GroupContent>
         <GroupContent>
           {techTiles.slice(-3).map(tileID => (
