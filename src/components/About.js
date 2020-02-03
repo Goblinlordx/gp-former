@@ -3,8 +3,6 @@ import { Section, Content } from "./Common";
 
 export default () => (
   <Section>
-    <Content>
-      GP Former
-    </Content>
+    <Content>GP Former</Content>
   </Section>
 );

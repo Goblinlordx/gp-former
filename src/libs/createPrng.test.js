@@ -28,7 +28,6 @@ it("returns same values given same seed", () => {
 });
 
 comparisonSeeds.forEach(([left, right]) => {
-
   it(`generates different numbers from different seeds: ${printArr([
     left,
     right
@@ -43,7 +42,7 @@ comparisonSeeds.forEach(([left, right]) => {
   });
 });
 
-const seedRepeats = [0, 1, 100, 3211, 0xFF, 0xFFFF];
+const seedRepeats = [0, 1, 100, 3211, 0xff, 0xffff];
 
 seedRepeats.forEach(testSeed => {
   it(`generates a non-repeating set of values: ${testSeed}`, () => {
@@ -54,7 +53,7 @@ seedRepeats.forEach(testSeed => {
 
     const match = [...sequence1].some(v => sequence2.has(v));
     expect(match).not.toBeTruthy();
-  })
+  });
 });
 
 // TODO [BMB]: Test for even distribution in generated values

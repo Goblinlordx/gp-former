@@ -5,7 +5,7 @@ const tokens = {
     "#6BA044",
     "#9C2A75",
     "#ECA83B",
-    "#449AD3",
+    "#449AD3"
   ],
   planetTypeBackgroundColors: {
     1: "#1C5199",
@@ -15,7 +15,7 @@ const tokens = {
     5: "#775536",
     6: "#909398",
     7: "#FFFFFF",
-    8: "#76A445",
+    8: "#76A445"
   }
 };
 
