@@ -1,13 +1,5 @@
-import convert from "@hvm/convert";
-import boolsToStr from "./boolsToStr";
-
-const b64Toutf8 = convert("b64", "utf8");
-
-import chunk from "./chunk";
-import boolToChar from "./boolToChar";
-
 export default str => {
-  const chars = b64Toutf8(str).split("");
+  const chars = atob(str).split("");
   return chars.reduce((a, char, i) => {
     const byte = char.charCodeAt(0);
     for (let j = 0; j < 8; j++) {
