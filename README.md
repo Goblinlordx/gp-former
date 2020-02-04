@@ -1,4 +1,4 @@
-## GP Former
+# GP Former
 This project is a web application for creating randomized setups for the board game [Gaia Project][1].  The intent is to provide fast and free scenario generation not just online but offline as well (offline currently work in progress).
 
 ## Getting Started
