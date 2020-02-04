@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useQuery from "../hooks/useQuery";
-import randomizeGaiaProject from "../libs/gaiaProject/randomizeGaiaProject";
+import generate from "../libs/gaiaProject/generate";
 
 const parseBool = str => str === "true";
 
@@ -21,7 +21,7 @@ export default () => {
     if (internalLoading) return;
     setLoading(true);
     if (debug) console.time("randomizer");
-    randomizeGaiaProject({
+    generate({
       seed: seed || "0",
       playerCount: parseInt(playerCount) || 4,
       debug: parseBool(debug)

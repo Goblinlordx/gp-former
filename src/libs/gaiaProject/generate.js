@@ -18,7 +18,7 @@ const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
 const playerFactions = createSet(7);
 
-const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
+const generate = async ({ seed: inputSeed, playerCount = 4 }) => {
   if (playerCount < 2 || playerCount > 4)
     throw new Error("Invalid player count");
   const seed = hash(inputSeed || 0);
@@ -43,4 +43,4 @@ const randomizeGaiaProject = async ({ seed: inputSeed, playerCount = 4 }) => {
   };
 };
 
-export default randomizeGaiaProject;
+export default generate;
