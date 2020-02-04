@@ -1,9 +1,9 @@
-import hash from "./hash";
-import createPrng from "./createPrng";
-import createSelector from "./createSelector";
-import createSubsetSelector from "./createSubsetSelector";
-import createShuffle from "./createShuffle";
-import sortInt from "./sortInt";
+import hash from "../random/hash";
+import createPrng from "../random/createPrng";
+import createSelector from "../random/createSelector";
+import createSubsetSelector from "../random/createSubsetSelector";
+import createShuffle from "../random/createShuffle";
+import sortInt from "../random/sortInt";
 
 const createSet = n =>
   Array(n)

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useQuery from "../hooks/useQuery";
-import randomizeGaiaProject from "../libs/randomizeGaiaProject";
+import randomizeGaiaProject from "../libs/gaiaProject/randomizeGaiaProject";
 
 const parseBool = str => str === "true";
 
