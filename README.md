@@ -1,6 +1,17 @@
 ## GP Former
 This project is a web application for creating randomized setups for the board game [Gaia Project][1].  The intent is to provide fast and free scenario generation not just online but offline as well (offline currently work in progress).
 
+## Getting Started
+
+#### Dependencies
+
+-   [Node.js v13+](https://nodejs.org/en/)
+-   [yarn](https://yarnpkg.com/getting-started/install)
+
+#### Setup
+
+After dependencies are installed, install all project dependencies by running: `yarn` in the project root folder.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -15,7 +26,7 @@ You will also see any lint errors in the console.
 
 ### `yarn lint`
 
-Lints code based on [prettier][3].<br />
+Lints code based on [prettier][3].  You can run `yarn lint:fix` to fix most lint errors.<br />
 
 ### `yarn test`
 
