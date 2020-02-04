@@ -8,10 +8,6 @@ This project is a web application for creating randomized setups for the board g
 -   [Node.js v13+](https://nodejs.org/en/)
 -   [yarn](https://yarnpkg.com/getting-started/install)
 
-#### Setup
-
-After dependencies are installed, install all project dependencies by running: `yarn` in the project root folder.
-
 ## Available Scripts
 
 In the project directory, you can run:
