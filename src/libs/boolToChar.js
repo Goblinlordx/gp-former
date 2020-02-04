@@ -7,5 +7,7 @@ export default boolArr => {
     a[i] = bit;
     return a;
   }, Array(SIZE).fill(false));
-  return String.fromCharCode(filledArr.reduce((a, bit) => (a << 1) | (bit ? 1 : 0), 0));
+  return String.fromCharCode(
+    filledArr.reduce((a, bit) => (a << 1) | (bit ? 1 : 0), 0)
+  );
 };
