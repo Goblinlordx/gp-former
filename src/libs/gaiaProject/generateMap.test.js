@@ -1,5 +1,9 @@
 import createPrng from "../random/createPrng";
-import generateMap, { IterationError, TimeoutError } from "./generateMap";
+import generateMap, {
+  IterationError,
+  TimeoutError,
+  ImpossibleError
+} from "./generateMap";
 
 it("generates random set of proper dimensions: (1 x 2)", () => {
   const rng = createPrng(0);
@@ -49,15 +53,21 @@ it("result contains only ids from those provided", () => {
   expect(inTileSet).toBeTruthy();
 });
 
-it("fails after too many itterations", () => {
-  const alwaysInvalidStrategy = () => [false, []];
+it("fails after too many iterations", () => {
+  const alwaysInvalidStrategy = () => [1];
   const rng = createPrng(0);
-  const tiles = [1, 2, 3, 4];
+  const tiles = [1, 2];
   let err;
   try {
-    generateMap(rng, tiles, [[0, 1, 1, 0]], [alwaysInvalidStrategy], {
-      maxIterations: 1
-    });
+    const res = generateMap(
+      rng,
+      tiles,
+      [[0, 1, 1, 0]],
+      [alwaysInvalidStrategy],
+      {
+        maxIterations: 1
+      }
+    );
   } catch (e) {
     err = e;
   }
@@ -65,16 +75,35 @@ it("fails after too many itterations", () => {
 });
 
 it("fails after timeout", () => {
-  const alwaysInvalidStrategy = () => [false, []];
+  const alwaysInvalidStrategy = () => [];
   const rng = createPrng(0);
-  const tiles = [1, 2, 3, 4];
+  const tiles = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   let err;
   try {
-    generateMap(rng, tiles, [[0, 1, 1, 0]], [alwaysInvalidStrategy], {
-      timeout: 1
-    });
+    generateMap(
+      rng,
+      tiles,
+      [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
+      [alwaysInvalidStrategy],
+      {
+        timeout: 1
+      }
+    );
   } catch (e) {
     err = e;
   }
   expect(err instanceof TimeoutError).toBeTruthy();
+});
+
+it("fails as impossible", () => {
+  const alwaysInvalidStrategy = () => [];
+  const rng = createPrng(0);
+  const tiles = [1, 2, 3];
+  let err;
+  try {
+    generateMap(rng, tiles, [[1, 1]], [alwaysInvalidStrategy]);
+  } catch (e) {
+    err = e;
+  }
+  expect(err instanceof ImpossibleError).toBeTruthy();
 });
