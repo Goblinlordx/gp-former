@@ -55,15 +55,9 @@ it("fails after too many itterations", () => {
   const tiles = [1, 2, 3, 4];
   let err;
   try {
-    const map = generateMap(
-      rng,
-      tiles,
-      [[0, 1, 1, 0]],
-      [alwaysInvalidStrategy],
-      {
-        maxIterations: 1
-      }
-    );
+    generateMap(rng, tiles, [[0, 1, 1, 0]], [alwaysInvalidStrategy], {
+      maxIterations: 1
+    });
   } catch (e) {
     err = e;
   }
@@ -76,15 +70,9 @@ it("fails after timeout", () => {
   const tiles = [1, 2, 3, 4];
   let err;
   try {
-    const map = generateMap(
-      rng,
-      tiles,
-      [[0, 1, 1, 0]],
-      [alwaysInvalidStrategy],
-      {
-        timeout: 1
-      }
-    );
+    generateMap(rng, tiles, [[0, 1, 1, 0]], [alwaysInvalidStrategy], {
+      timeout: 1
+    });
   } catch (e) {
     err = e;
   }

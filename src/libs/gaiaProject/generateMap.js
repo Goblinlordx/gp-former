@@ -47,12 +47,15 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
       : MAX_ITERATIONS;
   const timeout = typeof config.timeout === "number" ? config.timeout : TIMEOUT;
   let layout = fillLayout(rng, tileSet, layoutInput);
-  const getSetOrder = layout.reduce((a, row) => {
-    row.forEach(([id, rot]) => {
-      a.push(id);
-    });
-    return a;
-  }, []);
+  const getSetOrder = l =>
+    l.reduce((a, row) => {
+      row.forEach(([id, rot]) => {
+        a.push(id);
+      });
+      return a;
+    }, []);
+  let setOrder = getSetOrder(layout);
+  if (!setOrder) console.log("ignore");
   const start = Date.now();
   let iteration = 0;
   while (true) {
@@ -63,11 +66,13 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
       },
       [true, []]
     );
+    if (!invalidSet) console.log("ignore");
     if (valid) break;
     if (iteration >= maxIter)
       throw new IterationError("max iterations reached generating map");
     if (Date.now() - start > timeout)
       throw new TimeoutError("timeout generating map");
+    // TODO: Implement update rotations for next iteration
     iteration++;
   }
   return layout;
