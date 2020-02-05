@@ -3,6 +3,13 @@ const { empty, space, p1, p2, p3, p4, p5, p6, p7, p8, p9 } = Types;
 
 // Map tiles in OddQ orientation
 const mapTiles = {
+  0: [
+    [empty, empty, empty, empty, empty],
+    [empty, empty, empty, empty, empty],
+    [empty, empty, empty, empty, empty],
+    [empty, empty, empty, empty, empty],
+    [empty, empty, empty, empty, empty]
+  ],
   1: [
     [empty, space, space, space, empty],
     [space, p5, space, p1, space],
