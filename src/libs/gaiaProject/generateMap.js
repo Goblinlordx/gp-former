@@ -61,24 +61,22 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
   const timeout = typeof config.timeout === "number" ? config.timeout : TIMEOUT;
   const shuffle = createShuffle(rng);
   let layout = fillLayout(rng, tileSet, layoutInput);
-  const getRotOrder = l =>
-    l.reduce((a, row) => {
-      row.forEach(([id, rot]) => {
+  const rotOrder = shuffle(
+    layout.reduce((a, row) => {
+      row.forEach(([id]) => {
         if (id) a.push(id);
       });
       return a;
-    }, []);
-  const getRot = (l, rotOrder) =>
-    l.reduce((a, row) => {
-      row.forEach(([id, rot]) => {
-        if (!id) return;
-        a[rotOrder.indexOf(id)] = rot;
-      });
-      return a;
-    }, Array(rotOrder.length).fill(0));
-  const rotOrder = shuffle(getRotOrder(layout));
+    }, [])
+  );
+  const rotations = layout.reduce((a, row) => {
+    row.forEach(([id, rot]) => {
+      if (!id) return;
+      a[rotOrder.indexOf(id)] = rot;
+    });
+    return a;
+  }, Array(rotOrder.length).fill(0));
 
-  let rotations = getRot(layout, rotOrder);
   const maxPossibleIter = 6 ** rotOrder.length;
   const checked = [];
   let current = rotToNum(rotations);
