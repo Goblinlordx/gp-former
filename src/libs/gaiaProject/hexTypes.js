@@ -1,4 +1,5 @@
 const hexTypes = [
+  "empty",
   "p1",
   "p2",
   "p3",
@@ -8,8 +9,7 @@ const hexTypes = [
   "p7",
   "p8",
   "p9",
-  "space",
-  "empty"
+  "space"
 ].reduce((a, k, v) => {
   a[k] = v;
   return a;

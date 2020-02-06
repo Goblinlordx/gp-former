@@ -4,6 +4,7 @@ import createSelector from "../random/createSelector";
 import createSubsetSelector from "../random/createSubsetSelector";
 import createShuffle from "../random/createShuffle";
 import sortInt from "../random/sortInt";
+import generateMap from "./generateMap";
 
 const createSet = n =>
   Array(n)
@@ -18,7 +19,11 @@ const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
 const playerFactions = createSet(7);
 
-const generate = async ({ seed: inputSeed, playerCount = 4 }) => {
+const generate = async ({
+  seed: inputSeed,
+  playerCount = 4,
+  mapValidators = []
+}) => {
   if (playerCount < 2 || playerCount > 4)
     throw new Error("Invalid player count");
   const seed = hash(inputSeed || 0);
@@ -39,7 +44,16 @@ const generate = async ({ seed: inputSeed, playerCount = 4 }) => {
     playerFactions: selectSubset(playerFactions, 4)
       .map(v => `${v}${selectSubset(["a", "b"], 1)[0]}`)
       .slice(0, playerCount)
-      .sort()
+      .sort(),
+    map: generateMap(
+      prng,
+      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      [
+        [0, 1, 1, 1],
+        [1, 1, 1, 1],
+        [0, 1, 1, 1]
+      ]
+    )
   };
 };
 

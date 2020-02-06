@@ -1,4 +1,5 @@
 import Types from "./hexTypes";
+import { rotTile } from "../map/hex";
 const { empty, space, p1, p2, p3, p4, p5, p6, p7, p8, p9 } = Types;
 
 // Map tiles in OddQ orientation
@@ -101,6 +102,30 @@ const mapTiles = {
     [p1, p2, space, space, space],
     [empty, empty, space, empty, empty]
   ]
+};
+
+export const getTile = ([id, rot]) => {
+  if (!mapTiles[id])
+    throw new Error(
+      `Invalid tile ID: ${id}\m valid IDs: ${Object.keys(mapTiles).join(", ")}`
+    );
+  return rotTile(mapTiles[id], rot);
+};
+
+const additionalRowPerLength = len => Math.floor((len - 1) / 2);
+
+export const buildMap = layout => {
+  const addRows = additionalRowPerLength(layout.length);
+  const map = Array(layout.length * 5 + addRows).fill(
+    Array(layout[0].length * 5).fill(empty)
+  );
+  return layout.reduce((a, idRots, y) => {
+    const tiles = idRots.map(getTile);
+    tiles.forEach((t, x) => {
+      console.log(x, y, t);
+    });
+    return a;
+  }, []);
 };
 
 export default mapTiles;

@@ -22,19 +22,6 @@ const rotToNum = rots => parseInt(rots.reverse().join(""), 6);
 
 const rotIdx = (n, idx) => n + 6 ** idx;
 
-const createSetRot = (layout, rotOrder) => {
-  const map = layout.reduce((a, row) => {
-    row.forEach(ref => {
-      const [id] = ref;
-      if (!id) return;
-      a[id] = ref;
-    });
-  }, {});
-  return (id, rot) => {
-    map[id][1] = rot;
-  };
-};
-
 const fillLayout = (rng, tileSet, layout) => {
   const tileCount = layout.reduce((a, row) => {
     row.forEach(x => {
