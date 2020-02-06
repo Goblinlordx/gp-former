@@ -97,6 +97,7 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
     if (Date.now() - start > timeout)
       throw new TimeoutError("timeout generating map");
     // TODO: Implement update rotations for next iteration
+    // eslint-disable-next-line no-loop-func
     const found = invalidSet.some(id => {
       const idx = rotOrder.indexOf(id);
       let next = current;
@@ -107,6 +108,7 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
           return true;
         }
       }
+      return false;
     });
     if (found) break;
     for (let i = 0; i < maxPossibleIter; i++) {

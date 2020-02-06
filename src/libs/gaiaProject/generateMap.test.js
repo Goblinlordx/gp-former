@@ -59,15 +59,9 @@ it("fails after too many iterations", () => {
   const tiles = [1, 2];
   let err;
   try {
-    const res = generateMap(
-      rng,
-      tiles,
-      [[0, 1, 1, 0]],
-      [alwaysInvalidStrategy],
-      {
-        maxIterations: 1
-      }
-    );
+    generateMap(rng, tiles, [[0, 1, 1, 0]], [alwaysInvalidStrategy], {
+      maxIterations: 1
+    });
   } catch (e) {
     err = e;
   }

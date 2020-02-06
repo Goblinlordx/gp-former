@@ -107,7 +107,7 @@ const mapTiles = {
 export const getTile = ([id, rot]) => {
   if (!mapTiles[id])
     throw new Error(
-      `Invalid tile ID: ${id}\m valid IDs: ${Object.keys(mapTiles).join(", ")}`
+      `Invalid tile ID: ${id}\n valid IDs: ${Object.keys(mapTiles).join(", ")}`
     );
   return rotTile(mapTiles[id], rot);
 };

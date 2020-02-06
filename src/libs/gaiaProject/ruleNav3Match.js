@@ -7,7 +7,7 @@ import deserialize from "../serialization/deserialize";
 const rawCache = raw("./ruleNav3Match.cache");
 const cache = deserialize(rawCache);
 
-export const validatePair = (pair, cache = []) => {
+export const validatePair = pair => {
   const cacheIdx = pairToIdx(pair);
   if (cache[cacheIdx] != null) return true;
   const map = buildMap([pair]);
@@ -43,10 +43,8 @@ export default layout => {
   let invalidPair;
   pairs.some(pair => {
     const res = validatePair(pair);
-    if (res) {
-      invalidPair = res;
-      return res;
-    }
+    if (res) invalidPair = res;
+    return res;
   });
   return invalidPair;
 };
