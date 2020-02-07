@@ -54,9 +54,9 @@ export const oddqOffsetNeighbor = (hex, direction) => {
 export const cubeDistance = (a, b) =>
   (Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z)) / 2;
 
-export const oddqToCube = hex => {
-  const x = hex.col;
-  const z = hex.row - (hex.col - (hex.col & 1)) / 2;
+export const oddqToCube = ([inx, iny]) => {
+  const x = inx;
+  const z = iny - (inx - (inx & 1)) / 2;
   const y = -x - z;
   return { x, y, z };
 };

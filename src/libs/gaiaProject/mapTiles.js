@@ -118,7 +118,7 @@ export const buildMap = layout => {
     .fill(null)
     .map(() => Array(layout[0].length * 5).fill(empty));
   layout.forEach((idRots, y) => {
-    const tiles = idRots.map(getTile);
+    const tiles = idRots.map(t => getTile(t));
     tiles.forEach((t, x) => {
       const originX = x * 5;
       const originY = y * 5 + Math.floor(x / 2);

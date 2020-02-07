@@ -5,6 +5,7 @@ import createSubsetSelector from "../random/createSubsetSelector";
 import createShuffle from "../random/createShuffle";
 import sortInt from "../random/sortInt";
 import generateMap from "./generateMap";
+import ruleNav3Match from "./ruleNav3Match";
 
 const createSet = n =>
   Array(n)
@@ -18,6 +19,7 @@ const techTiles = createSet(9);
 const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
 const playerFactions = createSet(7);
+const mapEvals = [ruleNav3Match];
 
 const generate = async ({
   seed: inputSeed,
@@ -47,12 +49,13 @@ const generate = async ({
       .sort(),
     map: generateMap(
       prng,
-      [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      [1, 2, 3, 4, "5a", "6a", "7a", 8, 9, 10],
       [
-        [0, 1, 1, 1],
-        [1, 1, 1, 1],
-        [0, 1, 1, 1]
-      ]
+        [1, 1, 1],
+        [0, 1, 1],
+        [1, 1, 1]
+      ],
+      mapValidators.map(id => mapEvals[id]).filter(Boolean)
     )
   };
 };

@@ -112,7 +112,7 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
     });
     if (found) break;
     for (let i = 0; i < maxPossibleIter; i++) {
-      current++;
+      current = (current + 1) % maxPossibleIter;
       if (!checked[current]) break;
     }
   }

@@ -24,12 +24,16 @@ export default () => {
     generate({
       seed: seed || "0",
       playerCount: parseInt(playerCount) || 4,
-      debug: parseBool(debug)
+      mapValidators: [0],
+      debug: parseBool(debug),
+      timeout: 5000
     })
       .then(res => {
         setState(res);
+        // Wait for render
+        return new Promise(r => setTimeout(r));
       })
-      .catch(err => setError(err))
+      .catch(err => console.error(err) || setError(err))
       .finally(() => {
         if (debug) console.timeEnd("randomizer");
         setLoading(false);

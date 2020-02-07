@@ -15,5 +15,14 @@ export const tileIdx = Object.keys(mapTiles)
  * Each tile has 6 sides and so between each pair there are 6^2 combinations of rotations.
  * This results in ((left idx * sequence sum + right idx) * 6^2) + (left rotation * 6^1) + right rotation
  */
-export const pairToIdx = ([[lid, lrot], [rid, rrot]]) =>
-  (sumSequence(tileIdx[lid]) + tileIdx[rid]) * 6 ** 2 + lrot * 6 + rrot;
+export const pairToIdx = ([[lid, lrot], [rid, rrot]]) => {
+  if (tileIdx[lid] < tileIdx[rid]) {
+    return (
+      (sumSequence(tileIdx[lid]) + tileIdx[rid]) * 6 ** 2 + lrot * 6 + rrot
+    );
+  }
+  return (
+    (sumSequence(tileIdx[rid]) + tileIdx[lid]) * 6 ** 2 +
+    ((rrot + (3 % 6)) * 6 + lrot)
+  );
+};
