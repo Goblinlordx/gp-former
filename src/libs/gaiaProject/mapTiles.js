@@ -112,20 +112,29 @@ export const getTile = ([id, rot]) => {
   return rotTile(mapTiles[id], rot);
 };
 
-const additionalRowPerLength = len => Math.floor((len - 1) / 2);
-
 export const buildMap = layout => {
-  const addRows = additionalRowPerLength(layout.length);
-  const map = Array(layout.length * 5 + addRows).fill(
-    Array(layout[0].length * 5).fill(empty)
-  );
-  return layout.reduce((a, idRots, y) => {
+  const addRows = Math.ceil(layout.length / 2);
+  const map = Array(layout.length * 5 + addRows)
+    .fill(null)
+    .map(() => Array(layout[0].length * 5).fill(empty));
+  layout.forEach((idRots, y) => {
     const tiles = idRots.map(getTile);
     tiles.forEach((t, x) => {
-      console.log(x, y, t);
+      const originX = x * 5;
+      const originY = y * 5 + Math.floor(x / 2);
+      const shiftEven = Math.ceil(x / 2);
+      const shiftOdd = Math.floor(x / 2);
+
+      t.forEach((tRow, offsetY) => {
+        tRow.forEach((hex, offsetX) => {
+          const outY = originY + offsetY + (offsetX % 2 ? shiftEven : shiftOdd);
+          const outX = originX + offsetX;
+          map[outY][outX] = hex;
+        });
+      });
     });
-    return a;
-  }, []);
+  });
+  return map;
 };
 
 export default mapTiles;

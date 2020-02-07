@@ -11,7 +11,9 @@ export const validatePair = pair => {
   const cacheIdx = pairToIdx(pair);
   if (cache[cacheIdx] != null) return true;
   const map = buildMap([pair]);
-  console.log(map);
+  map.forEach((row, y) => {
+    row.forEach((tile, x) => {});
+  });
 };
 
 export default layout => {
