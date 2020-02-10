@@ -105,15 +105,13 @@ const mapTiles = {
 };
 
 export const getWithinDist = (map, coord, dist = 3) =>
-  map
-    .reduce((a, row, y) => {
-      row
-        .forEach((_, x) => {
-          const tdist = offsetDistance(coord, [x, y]);
-          if (tdist > 0 && tdist <= dist) a.push([x, y]);
-        });
-      return a;
-    }, []);
+  map.reduce((a, row, y) => {
+    row.forEach((_, x) => {
+      const tdist = offsetDistance(coord, [x, y]);
+      if (tdist > 0 && tdist <= dist) a.push([x, y]);
+    });
+    return a;
+  }, []);
 
 export const getTile = ([id, rot]) => {
   if (!mapTiles[id])
