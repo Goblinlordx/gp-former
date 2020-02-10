@@ -106,10 +106,8 @@ const mapTiles = {
 
 export const getWithinDist = (map, coord, dist = 3) =>
   map
-    .filter((_, y) => Math.abs(coord[1] - y) > dist)
     .reduce((a, row, y) => {
       row
-        .filter((_, x) => Math.abs(coord[0] - x) > dist)
         .forEach((_, x) => {
           const tdist = offsetDistance(coord, [x, y]);
           if (tdist > 0 && tdist <= dist) a.push([x, y]);

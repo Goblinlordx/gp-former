@@ -14,8 +14,8 @@ afterEach(() => {
   container = null;
 });
 
-test("renders GP Former (title)", async () => {
+test("renders GP Former (title)", () => {
   const { getByText } = render(<App />);
-  const title = await waitForElement(() => getByText(/GP Former/i));
+  const title = getByText(/GP Former/i);
   expect(title).toBeInTheDocument();
 });
