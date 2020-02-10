@@ -20,18 +20,20 @@ export default () => {
   useEffect(() => {
     if (internalLoading) return;
     setLoading(true);
-    if (debug) console.time("randomizer");
-    generate({
-      seed: seed || "0",
-      playerCount: parseInt(playerCount) || 4,
-      mapValidators: [0],
-      debug: parseBool(debug),
-      timeout: 5000
-    })
+    new Promise(r => setTimeout(r))
+      .then(() => {
+        if (debug) console.time("randomizer");
+        return generate({
+          seed: seed || "0",
+          playerCount: parseInt(playerCount) || 4,
+          mapValidators: [0],
+          debug: parseBool(debug),
+          timeout: 5000
+        });
+      })
       .then(res => {
         setState(res);
         // Wait for render
-        return new Promise(r => setTimeout(r));
       })
       .catch(err => console.error(err) || setError(err))
       .finally(() => {

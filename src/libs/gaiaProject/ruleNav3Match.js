@@ -1,6 +1,6 @@
-import { oddrOffsetNeighbor, offsetDistance } from "../map/hex";
+import { oddrOffsetNeighbor } from "../map/hex";
 import { pairToIdx } from "./mapPairIdx";
-import { buildMap } from "./mapTiles";
+import { buildMap, getWithinDist } from "./mapTiles";
 import hexTypes from "./hexTypes";
 import raw from "raw.macro";
 import deserialize from "../serialization/deserialize";
@@ -9,15 +9,6 @@ const { p1, p2, p3, p4, p5, p6, p7 } = hexTypes;
 
 const rawCache = raw("./ruleNav3Match.cache");
 const cache = deserialize(rawCache);
-
-const getWithinDist = (map, coord, dist = 3) =>
-  map.reduce((a, row, y) => {
-    row.forEach((_, x) => {
-      const tdist = offsetDistance(coord, [x, y]);
-      if (tdist > 0 && tdist <= dist) a.push([x, y]);
-    });
-    return a;
-  }, []);
 
 const invalidMatchingTypes = [p1, p2, p3, p4, p5, p6, p7].reduce((a, k) => {
   a[k] = true;

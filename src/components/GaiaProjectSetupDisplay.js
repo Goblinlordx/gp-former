@@ -7,7 +7,7 @@ import FinalScoringTile from "./FinalScoringTile";
 import RoundBooster from "./RoundBooster";
 import FactionDisplay from "./FactionDisplay";
 
-const GaiaProjectRandomizer = ({ setup }) => {
+const GaiaProjectRandomizer = ({ setup, ...props }) => {
   const {
     bonusFederationToken,
     advancedTechTiles,
@@ -18,7 +18,7 @@ const GaiaProjectRandomizer = ({ setup }) => {
     playerFactions
   } = setup;
   return (
-    <Section>
+    <Section {...props}>
       <Group>
         <GroupHeader>Player Factions</GroupHeader>
         <GroupContent>

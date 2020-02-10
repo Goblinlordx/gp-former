@@ -1,5 +1,5 @@
 import Types from "./hexTypes";
-import { rotTile } from "../map/hex";
+import { rotTile, offsetDistance } from "../map/hex";
 const { empty, space, p1, p2, p3, p4, p5, p6, p7, p8, p9 } = Types;
 
 // Map tiles in OddQ orientation
@@ -39,7 +39,7 @@ const mapTiles = {
     [space, space, space, space, p1],
     [empty, empty, space, empty, empty]
   ],
-  "5a": [
+  "5f": [
     [empty, space, p7, space, empty],
     [space, p8, space, space, p9],
     [space, space, space, space, p2],
@@ -53,7 +53,7 @@ const mapTiles = {
     [space, p2, space, space, space],
     [empty, empty, space, empty, empty]
   ],
-  "6a": [
+  "6f": [
     [empty, space, space, p9, empty],
     [space, p5, space, p1, space],
     [space, space, space, space, space],
@@ -67,7 +67,7 @@ const mapTiles = {
     [space, space, p8, p9, p4],
     [empty, empty, space, empty, empty]
   ],
-  "7a": [
+  "7f": [
     [empty, space, space, p5, empty],
     [p9, space, p2, space, space],
     [space, p8, space, p8, space],
@@ -103,6 +103,19 @@ const mapTiles = {
     [empty, empty, space, empty, empty]
   ]
 };
+
+export const getWithinDist = (map, coord, dist = 3) =>
+  map
+    .filter((_, y) => Math.abs(coord[1] - y) > dist)
+    .reduce((a, row, y) => {
+      row
+        .filter((_, x) => Math.abs(coord[0] - x) > dist)
+        .forEach((_, x) => {
+          const tdist = offsetDistance(coord, [x, y]);
+          if (tdist > 0 && tdist <= dist) a.push([x, y]);
+        });
+      return a;
+    }, []);
 
 export const getTile = ([id, rot]) => {
   if (!mapTiles[id])

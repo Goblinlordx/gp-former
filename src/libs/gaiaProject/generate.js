@@ -49,7 +49,7 @@ const generate = async ({
       .sort(),
     map: generateMap(
       prng,
-      [1, 2, 3, 4, "5a", "6a", "7a", 8, 9, 10],
+      [1, 2, 3, 4, "5f", "6f", "7f", 8, 9, 10],
       [
         [1, 1, 1],
         [0, 1, 1],
