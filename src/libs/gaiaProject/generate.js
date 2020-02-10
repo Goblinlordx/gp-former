@@ -5,7 +5,7 @@ import createSubsetSelector from "../random/createSubsetSelector";
 import createShuffle from "../random/createShuffle";
 import sortInt from "../random/sortInt";
 import generateMap from "./generateMap";
-import ruleNav3Match from "./ruleNav3Match";
+import ruleNav3pMatch from "./ruleNav3pMatch";
 
 const createSet = n =>
   Array(n)
@@ -19,7 +19,7 @@ const techTiles = createSet(9);
 const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
 const playerFactions = createSet(7);
-const mapEvals = [ruleNav3Match];
+const mapEvals = [ruleNav3pMatch];
 
 const generate = async ({
   seed: inputSeed,

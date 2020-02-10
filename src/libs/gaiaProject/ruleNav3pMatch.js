@@ -7,7 +7,7 @@ import deserialize from "../serialization/deserialize";
 
 const { p1, p2, p3, p4, p5, p6, p7 } = hexTypes;
 
-const rawCache = raw("./ruleNav3Match.cache");
+const rawCache = raw("./ruleNav3pMatch.cache");
 const cache = deserialize(rawCache);
 
 const invalidMatchingTypes = [p1, p2, p3, p4, p5, p6, p7].reduce((a, k) => {
