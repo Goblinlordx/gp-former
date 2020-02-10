@@ -11,7 +11,10 @@ export default ({ setup, loading, error }) => {
       )} */}
       {setup ? (
         <GaiaProjectSetupDisplay
-          style={{ opacity: loading ? 0.5 : 1, transition: "opacity 0.2s ease" }}
+          style={{
+            opacity: loading ? 0.5 : 1,
+            transition: "opacity 0.2s ease"
+          }}
           setup={setup}
         />
       ) : (
