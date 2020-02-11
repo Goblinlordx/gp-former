@@ -6,6 +6,7 @@ import createShuffle from "../random/createShuffle";
 import sortInt from "../random/sortInt";
 import generateMap from "./generateMap";
 import ruleNav3pMatch from "./ruleNav3pMatch";
+import ruleNav2Access from "./ruleNav2Access";
 
 const createSet = n =>
   Array(n)
@@ -19,12 +20,13 @@ const techTiles = createSet(9);
 const advancedTechTiles = createSet(15);
 const federationTiles = createSet(6);
 const playerFactions = createSet(7);
-const mapEvals = [ruleNav3pMatch];
+const mapEvals = [ruleNav3pMatch, ruleNav2Access];
 
 const generate = async ({
   seed: inputSeed,
   playerCount = 4,
-  mapValidators = []
+  mapValidators = [],
+  timeout
 }) => {
   if (playerCount < 2 || playerCount > 4)
     throw new Error("Invalid player count");
@@ -55,7 +57,8 @@ const generate = async ({
         [0, 1, 1],
         [1, 1, 1]
       ],
-      mapValidators.map(id => mapEvals[id]).filter(Boolean)
+      mapValidators.map(id => mapEvals[id]).filter(Boolean),
+      { timeout }
     )
   };
 };

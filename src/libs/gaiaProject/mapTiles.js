@@ -105,13 +105,17 @@ const mapTiles = {
 };
 
 export const getWithinDist = (map, coord, dist = 3) =>
-  map.reduce((a, row, y) => {
-    row.forEach((_, x) => {
-      const tdist = offsetDistance(coord, [x, y]);
-      if (tdist > 0 && tdist <= dist) a.push([x, y]);
-    });
-    return a;
-  }, []);
+  map
+    .filter((_, y) => Math.abs(y - coord[1]) <= dist)
+    .reduce((a, row, y) => {
+      row
+        .filter((_, x) => Math.abs(x - coord[0]) <= dist)
+        .forEach((_, x) => {
+          const tdist = offsetDistance(coord, [x, y]);
+          if (tdist > 0 && tdist <= dist) a.push([x, y]);
+        });
+      return a;
+    }, []);
 
 export const getTile = ([id, rot]) => {
   if (!mapTiles[id])
@@ -121,11 +125,13 @@ export const getTile = ([id, rot]) => {
   return rotTile(mapTiles[id], rot);
 };
 
-export const buildMap = layout => {
-  const addRows = Math.ceil(layout.length / 2);
-  const map = Array(layout.length * 5 + addRows)
-    .fill(null)
-    .map(() => Array(layout[0].length * 5).fill(empty));
+export const buildMap = (layout, premade) => {
+  const addRows = Math.max(0, layout[0].length - 1);
+  const map =
+    premade ||
+    Array(layout.length * 5 + addRows)
+      .fill(null)
+      .map(() => Array(layout[0].length * 5).fill(empty));
   layout.forEach((idRots, y) => {
     const tiles = idRots.map(t => getTile(t));
     tiles.forEach((t, x) => {
@@ -138,7 +144,12 @@ export const buildMap = layout => {
         tRow.forEach((hex, offsetX) => {
           const outY = originY + offsetY + (offsetX % 2 ? shiftEven : shiftOdd);
           const outX = originX + offsetX;
-          map[outY][outX] = hex;
+          try {
+            map[outY][outX] = hex;
+          } catch (error) {
+            console.log(y, x, originY, originX, outY, outX);
+            throw error;
+          }
         });
       });
     });

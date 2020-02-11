@@ -26,7 +26,7 @@ export default () => {
         return generate({
           seed: seed || "0",
           playerCount: parseInt(playerCount) || 4,
-          mapValidators: [0],
+          mapValidators: [0, 1],
           debug: parseBool(debug),
           timeout: 5000
         });

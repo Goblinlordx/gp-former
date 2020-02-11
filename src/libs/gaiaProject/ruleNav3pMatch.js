@@ -5,7 +5,7 @@ import hexTypes from "./hexTypes";
 import raw from "raw.macro";
 import deserialize from "../serialization/deserialize";
 
-const { p1, p2, p3, p4, p5, p6, p7 } = hexTypes;
+const { empty, p1, p2, p3, p4, p5, p6, p7 } = hexTypes;
 
 const rawCache = raw("./ruleNav3pMatch.cache");
 const cache = deserialize(rawCache);
@@ -15,10 +15,13 @@ const invalidMatchingTypes = [p1, p2, p3, p4, p5, p6, p7].reduce((a, k) => {
   return a;
 }, {});
 
+const premadeMap = Array(6)
+  .fill(null)
+  .map(() => Array(10).fill(empty));
 export const validatePair = pair => {
   const cacheIdx = pairToIdx(pair);
   if (cache[cacheIdx] != null) return true;
-  const map = buildMap([pair]);
+  const map = buildMap([pair], premadeMap);
   return !map.some((row, y) =>
     row.some(
       (hex, x) =>

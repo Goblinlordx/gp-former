@@ -95,7 +95,7 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
     if (iteration >= maxIter)
       throw new IterationError("max iterations reached generating map");
     if (Date.now() - start > timeout)
-      throw new TimeoutError("timeout generating map");
+      throw new TimeoutError(`timeout generating map: ${iteration}`);
     // TODO: Implement update rotations for next iteration
     // eslint-disable-next-line no-loop-func
     const found = invalidSet.some(id => {
