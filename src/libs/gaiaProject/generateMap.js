@@ -53,12 +53,10 @@ const fillLayout = (rng, tileSet, layout) => {
   }, []);
 };
 
-export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
-  const maxIter =
-    typeof config.maxIterations === "number"
-      ? config.maxIterations
-      : MAX_ITERATIONS;
-  const timeout = typeof config.timeout === "number" ? config.timeout : TIMEOUT;
+const generateCycle = (rng, tileSet, layoutInput, strategies = [], config = {}) => {
+  const maxIter = config.maxIterations
+  const timeout = config.timeout;
+  const start = config.start;
   const shuffle = createShuffle(rng);
   let layout = fillLayout(rng, tileSet, layoutInput);
   const rotOrder = shuffle(
@@ -80,7 +78,6 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
   const maxPossibleIter = 6 ** rotOrder.length;
   const checked = [];
   let current = rotToNum(rotations);
-  const start = Date.now();
   let iteration = 0;
   while (true) {
     checked[current] = true;
@@ -126,3 +123,33 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
   });
   return layout;
 };
+
+const iterPerCycle = 6**3; // rotate up to 3 tiles through all combinations
+
+export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
+  const maxIter =
+    typeof config.maxIterations === "number"
+      ? config.maxIterations
+      : MAX_ITERATIONS;
+  const timeout = typeof config.timeout === "number" ? config.timeout : TIMEOUT;
+  const start = Date.now();
+  let current = 0;
+  let i = 0;
+  while(current < maxIter) {
+    const nextIter = Math.min(iterPerCycle, Math.max(0, maxIter - current))
+    let map;
+    try {
+      map = generateCycle(rng, tileSet, layoutInput, strategies, {maxIterations: nextIter, timeout, start})
+    } catch (err) {
+      if (!(err instanceof IterationError)) {
+        console.log(i, current);
+        throw err;
+      }
+      current = nextIter;
+      i += 1;
+      continue;
+    }
+    return map;
+  }
+  throw new IterationError("max iterations exceeded");
+}
