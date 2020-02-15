@@ -1,5 +1,4 @@
 import React from "react";
-import tokens from "../styles/tokens";
 import styled from "styled-components";
 import rb01 from "../owned/rb_01.png";
 import rb02 from "../owned/rb_02.png";
@@ -28,7 +27,7 @@ const tiles = {
 const idToName = n => `rb${("00" + n).slice(-2)}`;
 
 const Booster = styled.img`
-  width: calc( ( 100vw - ( 1em * 8 ) ) * ( 1/8 ) );
+  width: calc((100vw - (1em * 8)) * (1 / 8));
   min-width: 23px;
   max-width: 80px;
 `;
