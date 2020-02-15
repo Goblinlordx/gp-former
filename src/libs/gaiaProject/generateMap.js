@@ -53,8 +53,14 @@ const fillLayout = (rng, tileSet, layout) => {
   }, []);
 };
 
-const generateCycle = (rng, tileSet, layoutInput, strategies = [], config = {}) => {
-  const maxIter = config.maxIterations
+const generateCycle = (
+  rng,
+  tileSet,
+  layoutInput,
+  strategies = [],
+  config = {}
+) => {
+  const maxIter = config.maxIterations;
   const timeout = config.timeout;
   const start = config.start;
   const shuffle = createShuffle(rng);
@@ -124,7 +130,7 @@ const generateCycle = (rng, tileSet, layoutInput, strategies = [], config = {}) 
   return layout;
 };
 
-const iterPerCycle = 6**3; // rotate up to 3 tiles through all combinations
+const iterPerCycle = 6 ** 3; // rotate up to 3 tiles through all combinations
 
 export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
   const maxIter =
@@ -135,11 +141,15 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
   const start = Date.now();
   let current = 0;
   let i = 0;
-  while(current < maxIter) {
-    const nextIter = Math.min(iterPerCycle, Math.max(0, maxIter - current))
+  while (current < maxIter) {
+    const nextIter = Math.min(iterPerCycle, Math.max(0, maxIter - current));
     let map;
     try {
-      map = generateCycle(rng, tileSet, layoutInput, strategies, {maxIterations: nextIter, timeout, start})
+      map = generateCycle(rng, tileSet, layoutInput, strategies, {
+        maxIterations: nextIter,
+        timeout,
+        start
+      });
     } catch (err) {
       if (!(err instanceof IterationError)) {
         console.log(i, current);
@@ -152,4 +162,4 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
     return map;
   }
   throw new IterationError("max iterations exceeded");
-}
+};
