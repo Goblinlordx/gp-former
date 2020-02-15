@@ -17,5 +17,5 @@ const tiles = {
 };
 
 export default ({ tileID }) => (
-  <Tile src={tiles[`fin${tileID}`]} alt="round booster" />
+  <Tile src={tiles[`fin${tileID}`]} alt="Final scoring tile" />
 );

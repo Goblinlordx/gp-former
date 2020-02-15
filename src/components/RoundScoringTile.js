@@ -24,7 +24,10 @@ const tiles = {
 };
 
 const Tile = styled.img`
-  width: 130px;
+  margin: -0.5em;
+  width: calc( ( 100vw - 20px ) * ( 1/7 ) );
+  min-width: 32px;
+  max-width: 130px;
 `;
 
 export default ({ tileID }) => (
