@@ -78,7 +78,7 @@ export default ({ loading }) => {
     const seed = Math.floor(Math.random() * 36 ** 5).toString(36);
     const next = { ...form, seed };
     setForm(next);
-    history.push({
+    history.replace({
       pathname: "/",
       search: createQueryString(toQuery(next))
     });
