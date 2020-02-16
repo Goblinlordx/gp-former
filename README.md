@@ -1,4 +1,4 @@
-# GP Former
+# GP Former <sup><sub>[🌐][3]</sub></sup>
 This project is a web application for creating randomized setups for the board game [Gaia Project][1].  The intent is to provide fast and free scenario generation not just online but offline as well (offline currently work in progress).
 
 ## Getting Started
@@ -54,3 +54,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 [1]: https://boardgamegeek.com/boardgame/220308/gaia-project
 [2]: https://github.com/Goblinlordx/gp-former/blob/master/LICENSE.md
 [3]: https://prettier.io/
+[4]: https://gaia-project.dev-kat.com/
