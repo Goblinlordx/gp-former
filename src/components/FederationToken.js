@@ -20,11 +20,9 @@ const tokens = {
 };
 
 const Token = styled.img`
-  width: 60px;
+  width: 60%;
+  max-width: 60px;
   margin: 0.25em;
-  @media (max-width: ${sTokens.breakpoints.md}) {
-    width: 40px;
-  }
 `;
 
 export default ({ tokenID, ...props }) =>

@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import fin1 from "../owned/fin_1.png";
 import fin2 from "../owned/fin_2.png";
 import fin3 from "../owned/fin_3.png";
@@ -16,6 +17,10 @@ const tiles = {
   fin6
 };
 
+const FinalScoringTile = styled(Tile)`
+  width: calc((100vw - 5em) / 4);
+`;
+
 export default ({ tileID }) => (
-  <Tile src={tiles[`fin${tileID}`]} alt="Final scoring tile" />
+  <FinalScoringTile src={tiles[`fin${tileID}`]} alt="Final scoring tile" />
 );

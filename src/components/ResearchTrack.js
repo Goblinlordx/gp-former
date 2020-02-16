@@ -11,21 +11,21 @@ const ResearchCell = styled(Cell)`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: calc(100% / 7 - 16px);
-  @media (max-width: ${tokens.breakpoints.lg}) {
-    width: calc(100% / 4 - 16px);
-  }
-  @media (max-width: ${tokens.breakpoints.lg}) {
-    width: calc(100% / 3 - 16px);
+  padding: 0;
+  div {
+    display: inline-flex;
+    flex-direction: column;
+    width: calc((100vw - 7em) / 6);
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
   }
 `;
 
 const ExcessResearchCell = styled(ResearchCell)`
-  @media (max-width: ${tokens.breakpoints.lg}) {
-    flex-direction: row;
-    img {
-      max-width: 25%;
-    }
+  flex-direction: row;
+  img {
+    width: calc((100vw - 7em) / 6);
   }
 `;
 
@@ -33,9 +33,11 @@ export default ({ federationToken, advancedTechTiles, standardTechTiles }) => (
   <GroupContent>
     {tokens.researchTrackColors.map((c, i) => (
       <ResearchCell color={c} key={i}>
-        <FederationToken tokenID={i === 0 ? federationToken : null} />
-        <AdvancedTechTile tileID={advancedTechTiles[i]} />
-        <StandardTechTile tileID={standardTechTiles[i]} />
+        <div>
+          <FederationToken tokenID={i === 0 ? federationToken : null} />
+          <AdvancedTechTile tileID={advancedTechTiles[i]} />
+          <StandardTechTile tileID={standardTechTiles[i]} />
+        </div>
       </ResearchCell>
     ))}
     <ExcessResearchCell>
