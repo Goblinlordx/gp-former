@@ -15,7 +15,8 @@ const GaiaProjectRandomizer = ({ setup }) => {
     roundScoringTiles,
     finalScoringTiles,
     roundBoosters,
-    playerFactions
+    playerFactions,
+    map
   } = setup;
   return (
     <Section>

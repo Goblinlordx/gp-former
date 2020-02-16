@@ -4,6 +4,7 @@ import createSelector from "../random/createSelector";
 import createSubsetSelector from "../random/createSubsetSelector";
 import createShuffle from "../random/createShuffle";
 import sortInt from "../random/sortInt";
+import generateMap from "./generateMap";
 
 const createSet = n =>
   Array(n)
@@ -39,7 +40,16 @@ const generate = async ({ seed: inputSeed, playerCount = 4 }) => {
     playerFactions: selectSubset(playerFactions, 4)
       .map(v => `${v}${selectSubset(["a", "b"], 1)[0]}`)
       .slice(0, playerCount)
-      .sort()
+      .sort(),
+    map: generateMap(
+      prng,
+      [1, 2, 3, 4, "5f", "6f", "7f", 8, 9, 10],
+      [
+        [0, 1, 1, 1],
+        [1, 1, 1, 1],
+        [0, 1, 1, 1]
+      ]
+    )
   };
 };
 
