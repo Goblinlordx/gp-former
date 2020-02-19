@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import {
+  withQueryParams,
+  NumberParam,
+  StringParam,
+  BooleanParam
+} from "use-query-params";
 import styled from "styled-components";
 import { Section } from "./Common";
-import useQuery from "../hooks/useQuery";
-import createQueryString from "../libs/createQueryString";
 
 const Form = styled.form`
   font-size: 18px;
@@ -48,25 +51,17 @@ const FieldLabel = styled.span`
   font-weight: bold;
 `;
 
-export default ({ loading }) => {
-  const query = useQuery();
-  const history = useHistory();
+const SettingsForm = ({ loading, query, setQuery }) => {
+  const { s, p = 4 } = query;
   const [form, setForm] = useState({
-    seed: 0,
-    playerCount: 4,
-    debug: false,
-    ...query
+    ...query,
+    s: s || "0",
+    p: p || 4
   });
-  const toQuery = ({ debug, ...data }) => {
-    if (debug === "true") {
-      data.debug = true;
-    }
-    return data;
-  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    history.push({ pathname: "/", search: createQueryString(toQuery(form)) });
+    setQuery({ d: query.d, ...form });
   };
   const handleChange = name => e => {
     e.preventDefault();
@@ -75,13 +70,10 @@ export default ({ loading }) => {
   };
 
   const handleRandomize = e => {
-    const seed = Math.floor(Math.random() * 36 ** 5).toString(36);
-    const next = { ...form, seed };
+    const s = Math.floor(Math.random() * 36 ** 5).toString(36);
+    const next = { ...form, s };
     setForm(next);
-    history.replace({
-      pathname: "/",
-      search: createQueryString(toQuery(next))
-    });
+    setQuery({ ...query, ...next });
   };
 
   return (
@@ -92,20 +84,16 @@ export default ({ loading }) => {
             <FieldLabel>Seed</FieldLabel>
             <input
               type="text"
-              name="seed"
-              value={form.seed}
-              onChange={handleChange("seed")}
+              name="s"
+              value={form.s}
+              onChange={handleChange("s")}
             />
           </Field>
         </div>
         <div>
           <Field>
             <FieldLabel>Player Count</FieldLabel>
-            <select
-              name="playerCount"
-              value={form.playerCount}
-              onChange={handleChange("playerCount")}
-            >
+            <select name="p" value={form.p} onChange={handleChange("p")}>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
@@ -125,3 +113,12 @@ export default ({ loading }) => {
     </Section>
   );
 };
+
+export default withQueryParams(
+  {
+    s: StringParam,
+    p: NumberParam,
+    d: BooleanParam
+  },
+  SettingsForm
+);

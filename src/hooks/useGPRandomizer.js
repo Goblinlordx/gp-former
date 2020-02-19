@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import useQuery from "../hooks/useQuery";
+import {
+  useQueryParam,
+  StringParam,
+  NumberParam,
+  BooleanParam
+} from "use-query-params";
 import generate from "../libs/gaiaProject/generate";
-
-const parseBool = str => str === "true";
 
 let internalLoading = false;
 export default () => {
@@ -14,8 +17,9 @@ export default () => {
     setExternalLoading(v);
   };
 
-  const { seed, playerCount, debug: debugQuery } = useQuery();
-  const debug = parseBool(debugQuery);
+  const [seed] = useQueryParam("s", StringParam);
+  const [playerCount] = useQueryParam("p", NumberParam);
+  const [debug] = useQueryParam("d", BooleanParam);
 
   useEffect(() => {
     if (internalLoading) return;
@@ -23,8 +27,8 @@ export default () => {
     if (debug) console.time("randomizer");
     generate({
       seed: seed || "0",
-      playerCount: parseInt(playerCount) || 4,
-      debug: parseBool(debug)
+      playerCount: playerCount || 4,
+      debug
     })
       .then(res => {
         setState(res);

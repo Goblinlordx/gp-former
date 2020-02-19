@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { QueryParamProvider } from "use-query-params";
 import "./App.css";
 import About from "./components/About";
 import Footer from "./components/Footer";
@@ -23,7 +24,9 @@ const App = () => {
 
 const Wrapper = () => (
   <Router>
-    <App />
+    <QueryParamProvider ReactRouterRoute={Route}>
+      <App />
+    </QueryParamProvider>
   </Router>
 );
 export default Wrapper;
