@@ -32,7 +32,7 @@ const generate = async ({ seed: inputSeed, playerCount = 4 }) => {
     bonusFederationToken: select(federationTiles),
     advancedTechTiles: selectSubset(advancedTechTiles, 6),
     techTiles: shuffle(techTiles, 9),
-    roundScoringTiles: selectSubset(roundScoringTiles, 6).sort(sortInt),
+    roundScoringTiles: selectSubset(roundScoringTiles, 6),
     finalScoringTiles: selectSubset(finalScoringTiles, 2).sort(sortInt),
     roundBoosters: selectSubset(roundBoosters, 7)
       .slice(0, roundBoosterCount)
