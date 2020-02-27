@@ -1,4 +1,4 @@
-# GP Former <sup><sub>[🌐][4]</sub></sup>
+# GP Former <sup><sub>[🌐][4]</sub></sup> ![Node.js CI](https://github.com/Goblinlordx/gp-former/workflows/Node.js%20CI/badge.svg?branch=master)
 This project is a web application for creating randomized setups for the board game [Gaia Project][1].  The intent is to provide fast and free scenario generation not just online but offline as well (offline currently work in progress).
 
 ## Getting Started
