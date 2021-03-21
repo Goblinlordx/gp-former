@@ -8,14 +8,14 @@ it("returns undefined if map is valid", () => {
       [0, 0],
       [2, 0],
       [1, 0],
-      [0, 0]
+      [0, 0],
     ],
     [
       [0, 0],
       ["7b", 5],
       [0, 0],
-      [0, 0]
-    ]
+      [0, 0],
+    ],
   ];
   expect(ruleNav2Access(layout)).toEqual([]);
 });

@@ -15,9 +15,7 @@ const comparisonSeeds = [
 ];
 
 const getIterations = (rng: RNG, cycles: number) =>
-  Array(cycles)
-    .fill(0)
-    .map(rng);
+  Array(cycles).fill(0).map(rng);
 
 it("returns same values given same seed", () => {
   const rng1 = createPrng();

@@ -3,7 +3,7 @@ import createShuffle from "./createShuffle";
 
 const createSubsetSelector = (rng: RNG) => {
   const s = createShuffle(rng);
-  return function<T>(items: T[], n: number) {
+  return function <T>(items: T[], n: number) {
     return s(items).slice(0, n);
   };
 };

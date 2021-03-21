@@ -14,7 +14,7 @@ it("result has same elements as input", () => {
   const shuffle = createShuffle(rng);
   const arr = [1, 2, 3, 4, 5];
   const result = new Set(shuffle(arr));
-  const hasAll = arr.every(v => result.has(v));
+  const hasAll = arr.every((v) => result.has(v));
   expect(hasAll).toBeTruthy();
 });
 

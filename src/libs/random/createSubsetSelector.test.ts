@@ -21,7 +21,7 @@ it("selects elements that exist inside array passed", () => {
   const items = [1, 2, 3, 4, 5, 6, 7];
   const origSet = new Set(items);
   const result = selectSubset(items, 3);
-  const allExist = result.every(v => origSet.has(v));
+  const allExist = result.every((v) => origSet.has(v));
   expect(allExist).toBeTruthy();
 });
 

@@ -27,7 +27,7 @@ const diffPairs = [
   ["2", 2],
   ["Test", "Test1"],
   ["abcd", "abce"],
-  ["abcd", "bbcd"]
+  ["abcd", "bbcd"],
 ];
 const printPair = (left: string | number, right: string | number) =>
   `${typeof left}(${left}), ${typeof right}(${right})`;

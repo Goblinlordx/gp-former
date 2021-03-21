@@ -18,7 +18,7 @@ const invalidMatchingTypes = [p1, p2, p3, p4, p5, p6, p7].reduce((a, k) => {
 const premadeMap = Array(6)
   .fill(null)
   .map(() => Array(10).fill(empty));
-export const validatePair = pair => {
+export const validatePair = (pair) => {
   const cacheIdx = pairToIdx(pair);
   if (cache[cacheIdx] != null) return true;
   const map = buildMap([pair], premadeMap);
@@ -28,12 +28,12 @@ export const validatePair = pair => {
         invalidMatchingTypes[hex] &&
         getWithinDist(map, [x, y])
           .map(([cx, cy]) => map[cy][cx])
-          .some(chex => chex === hex)
+          .some((chex) => chex === hex)
     )
   );
 };
 
-export default layout => {
+export default (layout) => {
   const checked = {};
   const pairs = layout.reduce((a, row, y) => {
     row.forEach((cell, x) => {
@@ -48,7 +48,7 @@ export default layout => {
         if (!nid || checked[nid]) return;
         const pair = [
           [id, (rot + dir) % 6],
-          [nid, (nrot + dir) % 6]
+          [nid, (nrot + dir) % 6],
         ];
         a.push(pair);
       }
@@ -56,7 +56,7 @@ export default layout => {
     return a;
   }, []);
   let invalidPair;
-  pairs.some(pair => {
+  pairs.some((pair) => {
     const valid = validatePair(pair);
     if (!valid) invalidPair = pair;
     return invalidPair;

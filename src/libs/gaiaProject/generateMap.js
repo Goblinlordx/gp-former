@@ -15,16 +15,16 @@ const numToRot = (size, n) =>
   ("0".repeat(size) + n.toString(6))
     .split("")
     .slice(-size)
-    .map(x => parseInt(x, 10))
+    .map((x) => parseInt(x, 10))
     .reverse();
 
-const rotToNum = rots => parseInt(rots.reverse().join(""), 6);
+const rotToNum = (rots) => parseInt(rots.reverse().join(""), 6);
 
 const rotIdx = (n, idx) => n + 6 ** idx;
 
 const fillLayout = (rng, tileSet, layout) => {
   const tileCount = layout.reduce((a, row) => {
-    row.forEach(x => {
+    row.forEach((x) => {
       if (x) a++;
     });
     return a;
@@ -35,13 +35,13 @@ const fillLayout = (rng, tileSet, layout) => {
   const rotations = Array(6)
     .fill(0)
     .map((_, i) => i);
-  const selectedTiles = selectSubset(tileSet, tileCount).map(tile =>
+  const selectedTiles = selectSubset(tileSet, tileCount).map((tile) =>
     Array.isArray(tile) ? select(tile) : tile
   );
 
   return layout.reduce((a, row) => {
     const outputRow = [];
-    row.forEach(v => {
+    row.forEach((v) => {
       if (v) {
         outputRow.push([selectedTiles.pop(), select(rotations)]);
       } else {
@@ -101,7 +101,7 @@ const generateCycle = (
       throw new TimeoutError(`timeout generating map: ${iteration}`);
     // TODO: Implement update rotations for next iteration
     // eslint-disable-next-line no-loop-func
-    const found = invalidSet.some(id => {
+    const found = invalidSet.some((id) => {
       const idx = rotOrder.indexOf(id);
       let next = current;
       for (let i = 0; i < 6; i++) {
@@ -120,8 +120,8 @@ const generateCycle = (
     }
   }
   const newRots = numToRot(rotOrder.length, current);
-  layout.forEach(row => {
-    row.forEach(ref => {
+  layout.forEach((row) => {
+    row.forEach((ref) => {
       if (!ref[0]) return;
       const idx = rotOrder.indexOf(ref[0]);
       ref[1] = newRots[idx];
@@ -148,7 +148,7 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
       map = generateCycle(rng, tileSet, layoutInput, strategies, {
         maxIterations: nextIter,
         timeout,
-        start
+        start,
       });
     } catch (err) {
       if (!(err instanceof IterationError)) {

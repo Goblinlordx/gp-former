@@ -8,7 +8,7 @@ import generateMap from "./generateMap";
 import ruleNav3pMatch from "./ruleNav3pMatch";
 import ruleNav2Access from "./ruleNav2Access";
 
-const createSet = n =>
+const createSet = (n) =>
   Array(n)
     .fill(0)
     .map((_, i) => i + 1);
@@ -26,7 +26,7 @@ const generate = async ({
   seed: inputSeed,
   playerCount = 4,
   mapValidators = [],
-  timeout
+  timeout,
 }) => {
   if (playerCount < 2 || playerCount > 4)
     throw new Error("Invalid player count");
@@ -46,7 +46,7 @@ const generate = async ({
       .slice(0, roundBoosterCount)
       .sort(sortInt),
     playerFactions: selectSubset(playerFactions, 4)
-      .map(v => `${v}${selectSubset(["a", "b"], 1)[0]}`)
+      .map((v) => `${v}${selectSubset(["a", "b"], 1)[0]}`)
       .slice(0, playerCount)
       .sort(),
     map: generateMap(
@@ -55,11 +55,11 @@ const generate = async ({
       [
         [1, 1, 1],
         [0, 1, 1],
-        [1, 1, 1]
+        [1, 1, 1],
       ],
-      mapValidators.map(id => mapEvals[id]).filter(Boolean),
+      mapValidators.map((id) => mapEvals[id]).filter(Boolean),
       { timeout }
-    )
+    ),
   };
 };
 

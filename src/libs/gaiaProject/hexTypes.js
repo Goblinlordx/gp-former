@@ -9,7 +9,7 @@ const hexTypes = [
   "p7",
   "p8",
   "p9",
-  "space"
+  "space",
 ].reduce((a, k, v) => {
   a[k] = v;
   return a;

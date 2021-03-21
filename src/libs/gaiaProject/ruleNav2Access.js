@@ -3,12 +3,12 @@ import { buildMap, getWithinDist } from "./mapTiles";
 const { empty, space } = hexTypes;
 
 const typesToCheck = Object.values(hexTypes).filter(
-  type => ![empty, space].some(excluded => excluded === type)
+  (type) => ![empty, space].some((excluded) => excluded === type)
 );
 
 const typeSet = new Set(typesToCheck);
 
-export default layout => {
+export default (layout) => {
   const map = buildMap(layout);
   const state = typesToCheck.reduce((a, k) => {
     a[k] = new Set();
@@ -27,7 +27,7 @@ export default layout => {
     });
   });
   return typesToCheck.reduce((a, k) => {
-    return a && typesToCheck.every(kk => state[k].has(kk));
+    return a && typesToCheck.every((kk) => state[k].has(kk));
   }, true)
     ? undefined
     : [];

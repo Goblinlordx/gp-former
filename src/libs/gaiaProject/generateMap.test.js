@@ -2,7 +2,7 @@ import createPrng from "../random/createPrng";
 import generateMap, {
   IterationError,
   TimeoutError,
-  ImpossibleError
+  ImpossibleError,
 } from "./generateMap";
 
 it("generates random set of proper dimensions: (1 x 2)", () => {
@@ -20,7 +20,7 @@ it("generates random set of proper dimensions: (3 x 3)", () => {
     [
       [1, 1, 1],
       [1, 1, 1],
-      [1, 1, 1]
+      [1, 1, 1],
     ]
   );
   expect(map[0].length).toEqual(3);
@@ -35,7 +35,7 @@ it("generates random set of proper dimensions: (4 x 3 with empty cells)", () => 
     [
       [0, 1, 1, 1],
       [1, 1, 1, 1],
-      [0, 1, 1, 1]
+      [0, 1, 1, 1],
     ]
   );
   expect(map[0].length).toEqual(4);
@@ -60,7 +60,7 @@ it("fails after too many iterations", () => {
   let err;
   try {
     generateMap(rng, tiles, [[0, 1, 1, 0]], [alwaysInvalidStrategy], {
-      maxIterations: 1
+      maxIterations: 1,
     });
   } catch (e) {
     err = e;
@@ -80,7 +80,7 @@ it("fails after timeout", () => {
       [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]],
       [alwaysInvalidStrategy],
       {
-        timeout: 1
+        timeout: 1,
       }
     );
   } catch (e) {
