@@ -1,7 +1,7 @@
 import createPrng from "./createPrng";
 import createSelector from "./createSelector";
 
-const initSelector = seed => createSelector(createPrng(seed));
+const initSelector = (seed?: number) => createSelector(createPrng(seed));
 
 it("runs without crashing", () => {
   const select = initSelector();

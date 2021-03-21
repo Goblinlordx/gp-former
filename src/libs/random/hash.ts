@@ -1,5 +1,5 @@
 // Slightly modified java based hash (XOR with max after each iteration)
-const hash = (value = 0) => {
+const hash = (value: string | number = 0) => {
   const str =
     typeof value === "number"
       ? "number:" + value.toString(36)
@@ -9,7 +9,7 @@ const hash = (value = 0) => {
 
   if (str === null) {
     console.log(str, typeof str);
-    throw new Error("Invalid input value (should be string, number)");
+    throw new Error("Invalid input value (should be string or number)");
   }
 
   return str.split("").reduce((a, chr) => {

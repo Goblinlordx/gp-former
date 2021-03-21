@@ -29,7 +29,7 @@ const diffPairs = [
   ["abcd", "abce"],
   ["abcd", "bbcd"]
 ];
-const printPair = (left, right) =>
+const printPair = (left: string | number, right: string | number) =>
   `${typeof left}(${left}), ${typeof right}(${right})`;
 
 diffPairs.forEach(([left, right]) => {

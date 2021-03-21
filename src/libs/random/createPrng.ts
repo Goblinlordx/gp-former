@@ -1,8 +1,10 @@
+import RNG from "../../types/RNG";
+
 // Park-Miller LCG (ref: http://www.firstpr.com.au/dsp/rand31/)
 const A = 16807; // Multiplier
 const MAX = 0x7fffffff; // (2^31) - 1
 
-const createPrng = (seed = 0) => {
+const createPrng = (seed: number = 0): RNG => {
   let current = seed % MAX;
   if (current <= 0) current += MAX - 1;
 
