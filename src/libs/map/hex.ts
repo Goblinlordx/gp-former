@@ -1,10 +1,10 @@
 // Based on https://www.redblobgames.com/grids/hexagons/
 
-type Tile<T> = T[][]
+export type Tile<T> = T[][]
 
 type OddRCoord = [x: number, y: number]
 
-type OddQCoord = [x: number, y: number]
+export type OddQCoord = [x: number, y: number]
 
 type CubedCoord = {
   x: number;

@@ -1,9 +1,13 @@
-import Types from "./hexTypes";
-import { rotTile, offsetDistance } from "../map/hex";
-const { empty, space, p1, p2, p3, p4, p5, p6, p7, p8, p9 } = Types;
+import HexType from "./HexType";
+import { OddQCoord, rotTile, offsetDistance } from "../map/hex";
+const { empty, space, p1, p2, p3, p4, p5, p6, p7, p8, p9 } = HexType;
+
+type Sector = HexType[][];
+
+type SectorConfig = [id: string, rot: number]
 
 // Map tiles in OddQ orientation
-const mapTiles = {
+const mapTiles: Record<string, Sector> = {
   0: [
     [empty, empty, empty, empty, empty],
     [empty, empty, empty, empty, empty],
@@ -104,10 +108,10 @@ const mapTiles = {
   ]
 };
 
-export const getWithinDist = (map, coord, dist = 3) =>
+export const getWithinDist = (map: HexType[][], coord: OddQCoord, dist = 3) =>
   map
     .filter((_, y) => Math.abs(y - coord[1]) <= dist)
-    .reduce((a, row, y) => {
+    .reduce<OddQCoord[]>((a, row, y) => {
       row
         .filter((_, x) => Math.abs(x - coord[0]) <= dist)
         .forEach((_, x) => {
@@ -117,21 +121,23 @@ export const getWithinDist = (map, coord, dist = 3) =>
       return a;
     }, []);
 
-export const getTile = ([id, rot]) => {
-  if (!mapTiles[id])
+export const getTile = (config: SectorConfig) => {
+  const [id, rot] = config;
+  const tile = mapTiles[id];
+  if (!tile)
     throw new Error(
       `Invalid tile ID: ${id}\n valid IDs: ${Object.keys(mapTiles).join(", ")}`
     );
-  return rotTile(mapTiles[id], rot);
+  return rotTile(tile, rot);
 };
 
-export const buildMap = (layout, premade) => {
+export const buildMap = (layout: SectorConfig[][], premade?: HexType[][]) => {
   const addRows = Math.max(0, layout[0].length - 1);
   const map =
     premade ||
-    Array(layout.length * 5 + addRows)
-      .fill(null)
-      .map(() => Array(layout[0].length * 5).fill(empty));
+    Array<HexType[]>(layout.length * 5 + addRows)
+      .fill([])
+      .map(() => Array<HexType>(layout[0].length * 5).fill(empty));
   layout.forEach((idRots, y) => {
     const tiles = idRots.map(t => getTile(t));
     tiles.forEach((t, x) => {
