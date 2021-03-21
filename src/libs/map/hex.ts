@@ -1,5 +1,35 @@
 // Based on https://www.redblobgames.com/grids/hexagons/
 
+type Tile<T> = T[][]
+
+type OddRCoord = [x: number, y: number]
+
+type OddQCoord = [x: number, y: number]
+
+type CubedCoord = {
+  x: number;
+  y: number;
+  z: number;
+}
+
+enum OddROffsetDirection {
+  right = 0,
+  upright,
+  upleft,
+  left,
+  downleft,
+  downright,
+}
+
+enum OddQOffsetDirection {
+  downright = 0,
+  upright,
+  up,
+  upleft,
+  downleft,
+  down,
+}
+
 const oddrDirections = [
   [
     [+1, 0],
@@ -38,30 +68,33 @@ var oddqDirections = [
   ]
 ];
 
-export const oddrOffsetNeighbor = (hex, direction) => {
-  const [x, y] = hex;
+export const oddrOffsetNeighbor = (coord: OddRCoord, direction: OddROffsetDirection) => {
+  const [x, y] = coord;
   const parity = y & 1;
   const dir = oddrDirections[parity][direction];
   return [x + dir[0], y + dir[1]];
 };
 
-export const oddqOffsetNeighbor = (hex, direction) => {
-  const parity = hex.col & 1;
+export const oddqOffsetNeighbor = (coord: OddQCoord, direction: OddQOffsetDirection) => {
+  const [x, y] = coord;
+  const parity = x & 1;
   const dir = oddqDirections[parity][direction];
-  return [hex.col + dir[0], hex.row + dir[1]];
+  return [x + dir[0], y + dir[1]];
 };
 
-export const cubeDistance = (a, b) =>
-  (Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z)) / 2;
+export const cubeDistance = (a: CubedCoord, b: CubedCoord) => {
+  return (Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z)) / 2;
+}
 
-export const oddqToCube = ([inx, iny]) => {
+export const oddqToCube = (input: OddQCoord) => {
+  const [inx, iny] = input;
   const x = inx;
   const z = iny - (inx - (inx & 1)) / 2;
   const y = -x - z;
   return { x, y, z };
 };
 
-export const offsetDistance = (a, b) =>
+export const offsetDistance = (a: OddQCoord, b:OddQCoord) =>
   cubeDistance(oddqToCube(a), oddqToCube(b));
 
 const rots = [
@@ -90,9 +123,12 @@ const rots = [
   ]
 ];
 
-export const cloneTile = tile => tile.map(row => row.slice());
+export const cloneTile = function<T>(tile: Tile<T>) {
+  const clone: Tile<T> = tile.map(row => row.slice());
+  return clone;
+}
 
-export const rotTile = (tile, rot) => {
+export const rotTile = function<T>(tile: Tile<T>, rot: number) {
   const output = cloneTile(tile);
   rots.forEach((set, r) => {
     const cells = set.map(([x, y]) => output[y][x]);
