@@ -1,11 +1,11 @@
 import { oddrOffsetNeighbor } from "../map/hex";
 import { pairToIdx } from "./mapPairIdx";
 import { buildMap, getWithinDist } from "./mapTiles";
-import hexTypes from "./hexTypes";
+import HexType from "./HexType";
 import raw from "raw.macro";
 import deserialize from "../serialization/deserialize";
 
-const { empty, p1, p2, p3, p4, p5, p6, p7 } = hexTypes;
+const { empty, p1, p2, p3, p4, p5, p6, p7 } = HexType;
 
 const rawCache = raw("./ruleNav3pMatch.cache");
 const cache = deserialize(rawCache);

@@ -1,8 +1,8 @@
-import hexTypes from "./hexTypes";
+import HexType from "./HexType";
 import { buildMap, getWithinDist } from "./mapTiles";
-const { empty, space } = hexTypes;
+const { empty, space } = HexType;
 
-const typesToCheck = Object.values(hexTypes).filter(
+const typesToCheck = Object.values(HexType).filter(
   (type) => ![empty, space].some((excluded) => excluded === type)
 );
 
