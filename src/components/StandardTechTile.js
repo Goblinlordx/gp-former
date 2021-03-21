@@ -22,6 +22,6 @@ const tiles = {
   tec9,
 };
 
-export default ({ tileID }) => (
-  <Tile src={tiles[`tec${tileID}`]} alt="standard tech tile" />
-);
+export default function StandardTechTile({ tileID }) {
+  return <Tile src={tiles[`tec${tileID}`]} alt="standard tech tile" />;
+}

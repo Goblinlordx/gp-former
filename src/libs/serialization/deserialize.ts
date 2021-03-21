@@ -1,4 +1,4 @@
-export default (str: string) => {
+export default function deserialize(str: string) {
   const chars = atob(str).split("");
   return chars.reduce<boolean[]>((a, char, i) => {
     const byte = char.charCodeAt(0);
@@ -7,4 +7,4 @@ export default (str: string) => {
     }
     return a;
   }, Array<boolean>(chars.length * 8).fill(false));
-};
+}

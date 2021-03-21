@@ -1,8 +1,10 @@
 import React from "react";
 import { Section, Content } from "./Common";
 
-export default () => (
-  <Section>
-    <Content>GP Former</Content>
-  </Section>
-);
+export default function About() {
+  return (
+    <Section>
+      <Content>GP Former</Content>
+    </Section>
+  );
+}

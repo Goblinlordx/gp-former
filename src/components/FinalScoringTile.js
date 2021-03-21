@@ -16,6 +16,6 @@ const tiles = {
   fin6,
 };
 
-export default ({ tileID }) => (
-  <Tile src={tiles[`fin${tileID}`]} alt="round booster" />
-);
+export default function FinalScoringTile({ tileID }) {
+  return <Tile src={tiles[`fin${tileID}`]} alt="round booster" />;
+}

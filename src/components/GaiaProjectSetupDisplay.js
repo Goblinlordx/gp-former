@@ -7,7 +7,7 @@ import FinalScoringTile from "./FinalScoringTile";
 import RoundBooster from "./RoundBooster";
 import FactionDisplay from "./FactionDisplay";
 
-const GaiaProjectRandomizer = ({ setup, ...props }) => {
+const _GaiaProjectRandomizer = ({ setup, ...props }) => {
   const {
     bonusFederationToken,
     advancedTechTiles,
@@ -68,4 +68,5 @@ const GaiaProjectRandomizer = ({ setup, ...props }) => {
   );
 };
 
-export default withRouter(GaiaProjectRandomizer);
+const GaiaProjectRandomizer = withRouter(_GaiaProjectRandomizer);
+export default GaiaProjectRandomizer;

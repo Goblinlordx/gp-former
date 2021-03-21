@@ -30,6 +30,6 @@ const Booster = styled.img`
   width: 100px;
 `;
 
-export default ({ tileID }) => (
-  <Booster src={tiles[idToName(tileID)]} alt="round booster" />
-);
+export default function RoundBooster({ tileID }) {
+  return <Booster src={tiles[idToName(tileID)]} alt="round booster" />;
+}

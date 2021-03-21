@@ -8,7 +8,7 @@ const typesToCheck = Object.values(hexTypes).filter(
 
 const typeSet = new Set(typesToCheck);
 
-export default (layout) => {
+export default function ruleNav2Access(layout) {
   const map = buildMap(layout);
   const state = typesToCheck.reduce((a, k) => {
     a[k] = new Set();
@@ -31,4 +31,4 @@ export default (layout) => {
   }, true)
     ? undefined
     : [];
-};
+}

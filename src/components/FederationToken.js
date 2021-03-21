@@ -27,7 +27,8 @@ const Token = styled.img`
   }
 `;
 
-export default ({ tokenID, ...props }) =>
-  tokenID != null ? (
+export default function FederationToken({ tokenID, ...props }) {
+  return tokenID != null ? (
     <Token src={tokens[`fed${tokenID}`]} alt="federation token" {...props} />
   ) : null;
+}

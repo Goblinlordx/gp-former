@@ -48,7 +48,7 @@ const FieldLabel = styled.span`
   font-weight: bold;
 `;
 
-export default ({ loading }) => {
+export default function SettingsForm({ loading }) {
   const query = useQuery();
   const history = useHistory();
   const [form, setForm] = useState({
@@ -124,4 +124,4 @@ export default ({ loading }) => {
       </Form>
     </Section>
   );
-};
+}

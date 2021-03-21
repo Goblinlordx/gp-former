@@ -1,7 +1,7 @@
 import React from "react";
 import GaiaProjectSetupDisplay from "./GaiaProjectSetupDisplay";
 
-export default ({ setup, loading, error }) => {
+export default function LoadableSetupDisplay({ setup, loading, error }) {
   return (
     <div>
       {/* {loading ? (
@@ -22,4 +22,4 @@ export default ({ setup, loading, error }) => {
       )}
     </div>
   );
-};
+}

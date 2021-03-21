@@ -29,19 +29,25 @@ const ExcessResearchCell = styled(ResearchCell)`
   }
 `;
 
-export default ({ federationToken, advancedTechTiles, standardTechTiles }) => (
-  <GroupContent>
-    {tokens.researchTrackColors.map((c, i) => (
-      <ResearchCell color={c} key={i}>
-        <FederationToken tokenID={i === 0 ? federationToken : null} />
-        <AdvancedTechTile tileID={advancedTechTiles[i]} />
-        <StandardTechTile tileID={standardTechTiles[i]} />
-      </ResearchCell>
-    ))}
-    <ExcessResearchCell>
-      {standardTechTiles.slice(6).map((tileID) => (
-        <StandardTechTile key={tileID} tileID={tileID} />
+export default function ResearchTrack({
+  federationToken,
+  advancedTechTiles,
+  standardTechTiles,
+}) {
+  return (
+    <GroupContent>
+      {tokens.researchTrackColors.map((c, i) => (
+        <ResearchCell color={c} key={i}>
+          <FederationToken tokenID={i === 0 ? federationToken : null} />
+          <AdvancedTechTile tileID={advancedTechTiles[i]} />
+          <StandardTechTile tileID={standardTechTiles[i]} />
+        </ResearchCell>
       ))}
-    </ExcessResearchCell>
-  </GroupContent>
-);
+      <ExcessResearchCell>
+        {standardTechTiles.slice(6).map((tileID) => (
+          <StandardTechTile key={tileID} tileID={tileID} />
+        ))}
+      </ExcessResearchCell>
+    </GroupContent>
+  );
+}

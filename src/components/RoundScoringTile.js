@@ -27,6 +27,6 @@ const Tile = styled.img`
   width: 130px;
 `;
 
-export default ({ tileID }) => (
-  <Tile src={tiles[`rs${tileID}`]} alt="round scoring tile" />
-);
+export default function RoundScoringTile({ tileID }) {
+  <Tile src={tiles[`rs${tileID}`]} alt="round scoring tile" />;
+}

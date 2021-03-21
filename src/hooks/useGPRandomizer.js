@@ -5,7 +5,7 @@ import generate from "../libs/gaiaProject/generate";
 const parseBool = (str) => str === "true";
 
 let internalLoading = false;
-export default () => {
+export default function useGPRandomizer() {
   const [loading, setExternalLoading] = useState(true);
   const [error, setError] = useState(null);
   const [state, setState] = useState(null);
@@ -43,4 +43,4 @@ export default () => {
   }, [seed, playerCount, debug]);
 
   return [state, loading, error];
-};
+}

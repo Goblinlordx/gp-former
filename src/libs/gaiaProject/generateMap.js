@@ -132,7 +132,13 @@ const generateCycle = (
 
 const iterPerCycle = 6 ** 3; // rotate up to 3 tiles through all combinations
 
-export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
+export default function generateMap(
+  rng,
+  tileSet,
+  layoutInput,
+  strategies = [],
+  config = {}
+) {
   const maxIter =
     typeof config.maxIterations === "number"
       ? config.maxIterations
@@ -162,4 +168,4 @@ export default (rng, tileSet, layoutInput, strategies = [], config = {}) => {
     return map;
   }
   throw new IterationError("max iterations exceeded");
-};
+}

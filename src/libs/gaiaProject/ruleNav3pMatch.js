@@ -33,7 +33,7 @@ export const validatePair = (pair) => {
   );
 };
 
-export default (layout) => {
+export default function ruleNav3pMatch(layout) {
   const checked = {};
   const pairs = layout.reduce((a, row, y) => {
     row.forEach((cell, x) => {
@@ -62,4 +62,4 @@ export default (layout) => {
     return invalidPair;
   });
   return invalidPair;
-};
+}
