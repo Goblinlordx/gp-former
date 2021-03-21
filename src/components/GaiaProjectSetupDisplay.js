@@ -15,14 +15,14 @@ const GaiaProjectRandomizer = ({ setup, ...props }) => {
     roundScoringTiles,
     finalScoringTiles,
     roundBoosters,
-    playerFactions
+    playerFactions,
   } = setup;
   return (
     <Section {...props}>
       <Group>
         <GroupHeader>Player Factions</GroupHeader>
         <GroupContent>
-          {playerFactions.map(r => (
+          {playerFactions.map((r) => (
             <Cell key={r}>
               <FactionDisplay type={r} />
             </Cell>
@@ -40,14 +40,14 @@ const GaiaProjectRandomizer = ({ setup, ...props }) => {
       <Group>
         <GroupHeader>Round Track & Final Scoring</GroupHeader>
         <GroupContent>
-          {roundScoringTiles.map(tileID => (
+          {roundScoringTiles.map((tileID) => (
             <Cell key={tileID}>
               <RoundScoringTile tileID={tileID} />
             </Cell>
           ))}
         </GroupContent>
         <GroupContent>
-          {finalScoringTiles.map(tileID => (
+          {finalScoringTiles.map((tileID) => (
             <Cell key={tileID}>
               <FinalScoringTile tileID={tileID} />
             </Cell>
@@ -57,7 +57,7 @@ const GaiaProjectRandomizer = ({ setup, ...props }) => {
       <Group>
         <GroupHeader>Round Boosters</GroupHeader>
         <GroupContent>
-          {roundBoosters.map(tileID => (
+          {roundBoosters.map((tileID) => (
             <Cell key={tileID}>
               <RoundBooster tileID={tileID} />
             </Cell>

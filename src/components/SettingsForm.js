@@ -55,7 +55,7 @@ export default ({ loading }) => {
     seed: 0,
     playerCount: 4,
     debug: false,
-    ...query
+    ...query,
   });
   const toQuery = ({ debug, ...data }) => {
     if (debug === "true") {
@@ -64,23 +64,23 @@ export default ({ loading }) => {
     return data;
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     history.push({ pathname: "/", search: createQueryString(toQuery(form)) });
   };
-  const handleChange = name => e => {
+  const handleChange = (name) => (e) => {
     e.preventDefault();
     const v = e.target.value;
     return setForm({ ...form, [name]: v });
   };
 
-  const handleRandomize = e => {
+  const handleRandomize = (e) => {
     const seed = Math.floor(Math.random() * 36 ** 5).toString(36);
     const next = { ...form, seed };
     setForm(next);
     history.push({
       pathname: "/",
-      search: createQueryString(toQuery(next))
+      search: createQueryString(toQuery(next)),
     });
   };
 

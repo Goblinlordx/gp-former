@@ -23,7 +23,7 @@ const typeMap = {
   "6a": ["Firaks", style.planetTypeBackgroundColors[6], planetType6],
   "6b": ["Bescods", style.planetTypeBackgroundColors[6], planetType6],
   "7a": ["Nevlas", style.planetTypeBackgroundColors[7], planetType7],
-  "7b": ["Itars", style.planetTypeBackgroundColors[7], planetType7]
+  "7b": ["Itars", style.planetTypeBackgroundColors[7], planetType7],
 };
 
 const Container = styled.div`

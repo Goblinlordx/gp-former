@@ -13,7 +13,7 @@ const tiles = {
   fin3,
   fin4,
   fin5,
-  fin6
+  fin6,
 };
 
 export default ({ tileID }) => (

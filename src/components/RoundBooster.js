@@ -21,10 +21,10 @@ const tiles = {
   rb07,
   rb08,
   rb09,
-  rb10
+  rb10,
 };
 
-const idToName = n => `rb${("00" + n).slice(-2)}`;
+const idToName = (n) => `rb${("00" + n).slice(-2)}`;
 
 const Booster = styled.img`
   width: 100px;

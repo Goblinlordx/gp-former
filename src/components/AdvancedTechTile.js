@@ -31,10 +31,10 @@ const tiles = {
   adv12,
   adv13,
   adv14,
-  adv15
+  adv15,
 };
 
-const idToName = n => `adv${("00" + n).slice(-2)}`;
+const idToName = (n) => `adv${("00" + n).slice(-2)}`;
 
 export default ({ tileID, ...props }) => (
   <Tile src={tiles[idToName(tileID)]} alt="advanced research tile" {...props} />

@@ -5,7 +5,7 @@ export default () => (
     style={{
       margin: "2em 1em 1em 1em",
       textAlign: "center",
-      fontSize: "0.5em"
+      fontSize: "0.5em",
     }}
   >
     <a

@@ -4,7 +4,7 @@ const { empty, space, p1, p2, p3, p4, p5, p6, p7, p8, p9 } = HexType;
 
 type Sector = HexType[][];
 
-type SectorConfig = [id: string, rot: number]
+export type SectorConfig = [id: string, rot: number]
 
 // Map tiles in OddQ orientation
 const mapTiles: Record<string, Sector> = {

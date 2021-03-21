@@ -13,7 +13,7 @@ export default ({ setup, loading, error }) => {
         <GaiaProjectSetupDisplay
           style={{
             opacity: loading ? 0.5 : 1,
-            transition: "opacity 0.2s ease"
+            transition: "opacity 0.2s ease",
           }}
           setup={setup}
         />

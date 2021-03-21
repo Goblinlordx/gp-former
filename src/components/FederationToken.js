@@ -16,7 +16,7 @@ const tokens = {
   fed4,
   fed5,
   fed6,
-  fed7
+  fed7,
 };
 
 const Token = styled.img`

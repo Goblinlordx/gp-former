@@ -19,7 +19,7 @@ const tiles = {
   tec6,
   tec7,
   tec8,
-  tec9
+  tec9,
 };
 
 export default ({ tileID }) => (

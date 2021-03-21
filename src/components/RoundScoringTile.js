@@ -20,7 +20,7 @@ const tiles = {
   rs7,
   rs8,
   rs9,
-  rs10: rs9
+  rs10: rs9,
 };
 
 const Tile = styled.img`
