@@ -1,15 +1,5 @@
 import boolToChar from "./boolToChar";
 
-it("throws if there is no param passed", () => {
-  let err;
-  try {
-    boolToChar();
-  } catch (e) {
-    err = e;
-  }
-  expect(err).toBeTruthy();
-});
-
 it("throws if input is too large", () => {
   let err;
   try {
